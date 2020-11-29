@@ -15,7 +15,7 @@ def main(input_filepath, output_filepath):
         cleaned data ready to be analyzed (saved in ../interim).
     """
     logger = logging.getLogger(__name__)
-    logger.info('making final data set from raw data')
+    logger.info('making interim data set from raw data')
 
     list_of_dfs = []
     all_files = glob.glob(input_filepath + "*.csv")

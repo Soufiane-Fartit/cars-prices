@@ -12,7 +12,7 @@ import pandas as pd
 @click.argument('output_filepath', default='data/interim/', type=click.Path())
 def main(input_filepath, output_filepath):
     """ Runs data processing scripts to turn raw data from (../raw) into
-        cleaned data ready to be analyzed (saved in ../processed).
+        cleaned data ready to be analyzed (saved in ../interim).
     """
     logger = logging.getLogger(__name__)
     logger.info('making final data set from raw data')
@@ -25,10 +25,52 @@ def main(input_filepath, output_filepath):
         df = pd.read_csv(filename, index_col=None, header=0)
         #df['brand'] = brand
         df.insert(0, 'brand', brand)
+
+        # parse price
+        df['price'] = df['price'].replace('[\£,]', '', regex=True).astype(float)
+        df['price'] = df['price'].fillna(-1).astype(int)
+
+        # clean mileage
+        if 'mileage2' in df.columns :
+            df[['mileage']] = df[['mileage', 'mileage2']].fillna(-1)\
+                                                .replace('Unknown','-1')\
+                                                .replace(',', '', regex=True)\
+                                                .astype(float)\
+                                                .astype(int)\
+                                                .max(axis=1)
+            df.drop('mileage2', axis=1, inplace=True)
+
+        # clean engine size
+        if 'engine size2' in df.columns :
+            es = pd.to_numeric(df['engine size'], errors='coerce').fillna(-1)
+            es2 = pd.to_numeric(df['engine size2'], errors='coerce').fillna(-1)
+            df['engine size'] = pd.DataFrame([es, es2]).max(axis=0)
+            df.drop('engine size2', axis=1, inplace = True)
+        
+        # clean fluel type
+        if 'fuel type2' in df.columns :
+            def func(x):
+                if x.values[0] is None:
+                    return None
+                else:
+                    return df.loc[x.name, x.values[0]]
+            df[['fuel type']] = pd.DataFrame(df[['fuel type', 'fuel type2']]\
+                                                .apply(lambda x: x.first_valid_index(), axis=1))\
+                                                .apply(func,axis=1)
+            df.drop('fuel type2', axis=1, inplace = True)
+
+
+        df['year'] = df['year'].fillna(-1).astype(int)
+        
+        df = df.rename(columns={'engine size':'engineSize',
+                            'tax(£)':'tax',
+                            'fuel type':'fuelType'
+        })
+        
         list_of_dfs.append(df)
     
     concat = pd.concat(list_of_dfs, axis=0, ignore_index=True)
-    concat.to_csv(output_filepath + 'dataset.csv')
+    concat.to_csv(output_filepath + 'dataset.csv', index=False)
 
 
 

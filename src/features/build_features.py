@@ -13,10 +13,11 @@ def main(input_filepath, output_filepath):
         features (saved in ../processed).
     """
     logger = logging.getLogger(__name__)
-    logger.info('making final data set from interim data')
 
+    logger.info('reading interim data')
     df = pd.read_csv(input_filepath+'dataset.csv', low_memory=False)
 
+    logger.info('handling missing data')
     df['missing_cat'] = 0
     df['missing_num'] = 0
     df['missing'] = 0
@@ -25,6 +26,8 @@ def main(input_filepath, output_filepath):
     df['missing'] = df['missing_cat']+df['missing_num']
     df = df[df.missing < 5]
 
+    df[['tax', 'mpg']] = df[['tax', 'mpg']].fillna(-1)
+
     df.drop('reference', axis=1, inplace=True)
 
     # SPLIT INTO NUMERICAL AND CATEGORICAL DATASETS
@@ -32,6 +35,7 @@ def main(input_filepath, output_filepath):
     df_categorical = df[['brand', 'model', 'transmission', 'fuelType']]
 
     # ENCODE CATEGORICAL DATA
+    logger.info('encoding categorical data')
     encoding = "Label Encoding"
 
     if encoding == "OneHot Encoding":
@@ -67,7 +71,8 @@ def main(input_filepath, output_filepath):
     df_encoded = imputer.fit_transform(df_encoded)
     """
     
-    df_encoded.to_csv(output_filepath+'dataset.csv')
+    df_encoded.to_csv(output_filepath+'dataset.csv', index=False)
+    logger.info('data features saved')
 
 
 if __name__ == '__main__':

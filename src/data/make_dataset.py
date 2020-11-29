@@ -15,7 +15,7 @@ def main(input_filepath, output_filepath):
         cleaned data ready to be analyzed (saved in ../interim).
     """
     logger = logging.getLogger(__name__)
-    logger.info('making interim data set from raw data')
+    logger.info('loading brut data')
 
     list_of_dfs = []
     all_files = glob.glob(input_filepath + "*.csv")
@@ -23,7 +23,7 @@ def main(input_filepath, output_filepath):
     for filename in all_files:
         brand = filename[len(input_filepath):-4]
         df = pd.read_csv(filename, index_col=None, header=0)
-        #df['brand'] = brand
+        
         df.insert(0, 'brand', brand)
 
         # parse price
@@ -69,9 +69,12 @@ def main(input_filepath, output_filepath):
         
         list_of_dfs.append(df)
     
+    logger.info('all files have been processed')
+
     concat = pd.concat(list_of_dfs, axis=0, ignore_index=True)
     concat.to_csv(output_filepath + 'dataset.csv', index=False)
-
+    
+    logger.info('interim data saved')
 
 
 if __name__ == '__main__':

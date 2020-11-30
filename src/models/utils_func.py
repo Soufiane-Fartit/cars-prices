@@ -63,15 +63,15 @@ def update_history(models_hist_path, model_id, model_name, model, params):
 
 
 def update_history_add_eval(models_hist_path, model_id=None, model_name=None, metrics=None):
-    """ADD EVALUATION METRICS THE HISTORY FILE FOR THE SPECIFIED MODEL
+        """ADD EVALUATION METRICS THE HISTORY FILE FOR THE SPECIFIED MODEL
 
-    Args:
-        models_hist_path (str): path to the history file
-        model_id (str, optional): the id of the model. Defaults to None.
-        model_name (str, optional): the name of the model. Defaults to None.
-        metrics (dict, optional): a dictionnary containing metadata related 
-                                    to the model evaluation. Defaults to None.
-    """
+        Args:
+            models_hist_path (str): path to the history file
+            model_id (str, optional): the id of the model. Defaults to None.
+            model_name (str, optional): the name of the model. Defaults to None.
+            metrics (dict, optional): a dictionnary containing metadata related 
+                                        to the model evaluation. Defaults to None.
+        """
         from datetime import datetime
         import json
         

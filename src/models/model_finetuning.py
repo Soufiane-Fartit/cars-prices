@@ -12,8 +12,8 @@ import pandas as pd
 @click.argument('output_filepath', default='models/', type=click.Path())
 @click.argument('params_path', default='/src/models/parameters.json', type=click.Path())
 def main(input_filepath, output_filepath, params_path):
-    """ Runs data processing scripts to turn raw data from (../raw) into
-        cleaned data ready to be analyzed (saved in ../interim).
+    """ Finds the best hyperparameters for the model
+        and save them as in (parameters.json)
     """
     logger = logging.getLogger(__name__)
 

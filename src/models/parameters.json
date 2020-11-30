@@ -1,4 +1,1 @@
-{"n_estimators" : 100, 
-    "criterion" : "mse", 
-    "max_depth" : 5
-}
+{"bootstrap": false, "max_depth": 43, "max_features": 0.34237526368871846, "min_samples_leaf": 2, "min_samples_split": 0.01527575079778274, "n_estimators": 131}

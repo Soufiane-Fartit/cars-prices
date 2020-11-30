@@ -1,0 +1,133 @@
+{
+    "model_hk41l6.pkl": {
+        "datetime": "2020-11-30 17:35:09.067186",
+        "model_type": "RandomForestRegressor",
+        "model_id": "hk41l6",
+        "params": {
+            "bootstrap": false,
+            "max_depth": 43,
+            "max_features": 0.34237526368871846,
+            "min_samples_leaf": 2,
+            "min_samples_split": 0.01527575079778274,
+            "n_estimators": 131
+        }
+    },
+    "model_70u6av.pkl": {
+        "datetime": "2020-11-30 17:35:22.016891",
+        "model_type": "RandomForestRegressor",
+        "model_id": "70u6av",
+        "params": {
+            "bootstrap": false,
+            "max_depth": 43,
+            "max_features": 0.34237526368871846,
+            "min_samples_leaf": 2,
+            "min_samples_split": 0.01527575079778274,
+            "n_estimators": 131
+        }
+    },
+    "model_7hflr4.pkl": {
+        "datetime": "2020-11-30 17:35:35.353464",
+        "model_type": "RandomForestRegressor",
+        "model_id": "7hflr4",
+        "params": {
+            "bootstrap": false,
+            "max_depth": 43,
+            "max_features": 0.34237526368871846,
+            "min_samples_leaf": 2,
+            "min_samples_split": 0.01527575079778274,
+            "n_estimators": 131
+        }
+    },
+    "model_x83mff.pkl": {
+        "datetime": "2020-11-30 17:44:01.378388",
+        "model_type": "RandomForestRegressor",
+        "model_id": "x83mff",
+        "params": {
+            "bootstrap": false,
+            "max_depth": 43,
+            "max_features": 0.34237526368871846,
+            "min_samples_leaf": 2,
+            "min_samples_split": 0.01527575079778274,
+            "n_estimators": 131
+        }
+    },
+    "model_bkh8zj.pkl": {
+        "datetime": "2020-11-30 17:44:59.713276",
+        "model_type": "RandomForestRegressor",
+        "model_id": "bkh8zj",
+        "params": {
+            "bootstrap": false,
+            "max_depth": 43,
+            "max_features": 0.34237526368871846,
+            "min_samples_leaf": 2,
+            "min_samples_split": 0.01527575079778274,
+            "n_estimators": 131
+        }
+    },
+    "model_bfya80.pkl": {
+        "datetime": "2020-11-30 17:55:26.681997",
+        "model_type": "RandomForestRegressor",
+        "model_id": "bfya80",
+        "params": {
+            "bootstrap": false,
+            "max_depth": 43,
+            "max_features": 0.34237526368871846,
+            "min_samples_leaf": 2,
+            "min_samples_split": 0.01527575079778274,
+            "n_estimators": 131
+        }
+    },
+    "model_pxknoh.pkl": {
+        "datetime": "2020-11-30 17:57:28.883250",
+        "model_type": "RandomForestRegressor",
+        "model_id": "pxknoh",
+        "params": {
+            "bootstrap": false,
+            "max_depth": 43,
+            "max_features": 0.34237526368871846,
+            "min_samples_leaf": 2,
+            "min_samples_split": 0.01527575079778274,
+            "n_estimators": 131
+        }
+    },
+    "model_6j0897.pkl": {
+        "trained": "2020-11-30 18:12:26.340117",
+        "model_type": "RandomForestRegressor",
+        "model_id": "6j0897",
+        "params": {
+            "bootstrap": false,
+            "max_depth": 43,
+            "max_features": 0.34237526368871846,
+            "min_samples_leaf": 2,
+            "min_samples_split": 0.01527575079778274,
+            "n_estimators": 131
+        },
+        "evaluation": {
+            "datetime": "2020-11-30 18:23:35.460236",
+            "metrics": {
+                "mae": 0.87,
+                "mse": 1.27
+            }
+        }
+    },
+    "model_ujwlhl.pkl": {
+        "trained": "2020-11-30 18:23:50.999632",
+        "model_type": "RandomForestRegressor",
+        "model_id": "ujwlhl",
+        "params": {
+            "bootstrap": false,
+            "max_depth": 43,
+            "max_features": 0.34237526368871846,
+            "min_samples_leaf": 2,
+            "min_samples_split": 0.01527575079778274,
+            "n_estimators": 131
+        },
+        "evaluation": {
+            "datetime": "2020-11-30 18:24:20.755398",
+            "metrics": {
+                "mae": 0.87,
+                "mse": 1.27
+            }
+        }
+    }
+}

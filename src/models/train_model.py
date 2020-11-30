@@ -5,7 +5,7 @@ from pathlib import Path
 import pickle
 import json
 import pandas as pd
-
+from utils_func import update_history, id_generator, save_model
 
 
 @click.command()
@@ -16,27 +16,46 @@ def main(input_filepath, output_filepath, params_path):
     """ Runs data processing scripts to turn raw data from (../raw) into
         cleaned data ready to be analyzed (saved in ../interim).
     """
+
     logger = logging.getLogger(__name__)
 
+    """
+    LOADING MODEL PARAMETERS
+    """
     with open(str(project_dir)+params_path, 'r') as f:
         params = json.load(f)
     logger.info('loaded model parameters')
     print(params)
 
+    """
+    LOADING DATA FEATURES
+    """
     logger.info('loading data features')
     df = pd.read_csv(input_filepath+'dataset.csv', low_memory=False)
     X, y = df.drop('price',axis=1), df['price']
 
+    """
+    TRAINING MODEL
+    """
     logger.info('training model')
     from sklearn.ensemble import RandomForestRegressor
     regr = RandomForestRegressor(**params)
     regr.fit(X, y)
 
+    """
+    SAVING MODEL
+    """
     logger.info('saving model')
-    pkl_filename = output_filepath+"pickle_model.pkl"
-    with open(pkl_filename, 'wb') as file:
-        pickle.dump(regr, file)
+    model_id = id_generator()
+    model_name = "model_"+model_id+".pkl"
+    save_model(output_filepath+model_name, regr)
     logger.info('model saved')
+
+    """
+    LOGGING MODEL INTO HISTORY FILE
+    """
+    update_history(output_filepath+'models_history.json', model_id, model_name, regr, params)
+    logger.info('saved model metadata')
 
     return 0
 

@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 
-""" This module offers util functions to be called and used in other modules """
+""" This module offers util functions to be called and used
+    in other modules
+"""
 
 from datetime import datetime
 import json
@@ -15,7 +17,7 @@ def id_generator(size=6, chars=string.ascii_lowercase + string.digits):
     Args:
         size (int, optional): size of the string. Defaults to 6.
         chars (str, optional): charachters to be used to generate the string.
-                                Defaults to string.ascii_lowercase+string.digits.
+                            Defaults to string.ascii_lowercase+string.digits.
 
     Returns:
         [str]: a random chain of charachters
@@ -80,7 +82,9 @@ def update_history_add_eval(
     assert (
         model_id is not None or model_name is not None
     ), "At least the model id or name must be given"
-    assert models_hist_path is not None, "You must specify the path to the history file"
+    assert (
+        models_hist_path is not None
+    ), "You must specify the path to the history file"
 
     if not model_name:
         model_name = "model_" + model_id + ".pkl"

@@ -1,4 +1,7 @@
 # -*- coding: utf-8 -*-
+
+""" This module process the dataset to create usefull features """
+
 import logging
 from pathlib import Path
 import click

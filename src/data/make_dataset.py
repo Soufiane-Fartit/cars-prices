@@ -1,4 +1,7 @@
 # -*- coding: utf-8 -*-
+
+""" This module serves to create a dataset using brut data collected """
+
 import logging
 from pathlib import Path
 # from dotenv import find_dotenv, load_dotenv

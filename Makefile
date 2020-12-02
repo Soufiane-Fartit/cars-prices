@@ -57,6 +57,10 @@ clean:
 lint:
 	pylint src
 
+## Lint using flake8
+flake8:
+	flake8 src
+
 ## format using black
 black:
 	black src

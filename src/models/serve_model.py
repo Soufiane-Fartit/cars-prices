@@ -1,10 +1,13 @@
 # -*- coding: utf-8 -*-
+
+""" This module is used to deploy an API to request predictions from the model """
+
 import logging
 from pathlib import Path
-from flask import Flask, request
-import pickle
-import numpy as np
 import argparse
+import pickle
+from flask import Flask, request
+import numpy as np
 
 
 parser = argparse.ArgumentParser()
@@ -21,6 +24,11 @@ app = Flask(__name__)
 
 @app.route("/api/", methods=["POST"])
 def makecalc():
+    """USES THE MODEL TO MAKE PREDICTIONS ON THE DATA SENT THROUGH THE API
+
+    Returns:
+        list: list of the predictions
+    """
     data = request.get_json()
     data_list = data["data"]
     data_array = np.array(data_list)
@@ -31,8 +39,8 @@ def makecalc():
 
 
 if __name__ == "__main__":
-    log_fmt = "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
-    logging.basicConfig(level=logging.INFO, format=log_fmt)
+    LOG_FMT = "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+    logging.basicConfig(level=logging.INFO, format=LOG_FMT)
 
     # not used in this stub but often useful for finding various files
     project_dir = Path(__file__).resolve().parents[2]

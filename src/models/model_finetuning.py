@@ -1,19 +1,25 @@
 # -*- coding: utf-8 -*-
-import click
+
+""" This module is used to find the best hyperparameters combination to train the model """
+
 import logging
 from pathlib import Path
 import os
 import json
+import click
 from scipy.stats import uniform, truncnorm, randint
 import pandas as pd
+from sklearn.ensemble import RandomForestRegressor
+from sklearn.model_selection import RandomizedSearchCV
 import plotly.express as px
 import plotly.io as pio
+from utils_func import id_generator
 
 pio.orca.config.executable = "/usr/local/bin/orca"
-from utils_func import id_generator
 
 
 # pylint: disable=no-value-for-parameter
+# pylint: disable=duplicate-code
 @click.command()
 @click.argument(
     "input_filepath", default="data/processed/", type=click.Path(exists=True)
@@ -28,17 +34,15 @@ def main(input_filepath, output_filepath, params_path):
 
     # READING DATA
     logger.info("loading data")
-    df = pd.read_csv(input_filepath + "dataset.csv", low_memory=False)
-    X, y = df.drop("price", axis=1), df["price"]
+    data = pd.read_csv(input_filepath + "dataset.csv", low_memory=False)
+    features, targets = data.drop("price", axis=1), data["price"]
 
     # BUILDING ESTIMATOR
     logger.info("loading regressor and randomsearchcv")
-    from sklearn.ensemble import RandomForestRegressor
 
     regr = RandomForestRegressor()
 
     # BUILDING RANDOMIZED SEARCH WITH CROSS-VALIDATION
-    from sklearn.model_selection import RandomizedSearchCV
 
     random_grid = {
         "n_estimators": randint(4, 200),
@@ -59,7 +63,7 @@ def main(input_filepath, output_filepath, params_path):
     )
 
     # SEARCHING FOR BEST HYPERPARAMETERS
-    search = regr_random.fit(X, y)
+    search = regr_random.fit(features, targets)
     logger.info("best hyperparameters found")
 
     # MAKING A DIRECTORY FOR THE EXPERIMENT
@@ -91,18 +95,18 @@ def main(input_filepath, output_filepath, params_path):
     # SAVING THE BEST HYPERPARAMETERS IN THE EXPERIMENT DIRECTORY TO KEEP TRACK
     with open(
         output_filepath + "hyperparams-search/" + run_id + "/best_parameters.json", "w"
-    ) as f:
-        json.dump(search.best_params_, f)
+    ) as outfile:
+        json.dump(search.best_params_, outfile)
 
     # SAVING THE BEST HYPERPARAMETERS TO BE USED IN THE FUTURE
-    with open(str(project_dir) + "/" + params_path, "w") as f:
-        json.dump(search.best_params_, f)
+    with open(str(project_dir) + "/" + params_path, "w") as outfile:
+        json.dump(search.best_params_, outfile)
     logger.info("saved model parameters")
 
 
 if __name__ == "__main__":
-    log_fmt = "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
-    logging.basicConfig(level=logging.INFO, format=log_fmt)
+    LOG_FMT = "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+    logging.basicConfig(level=logging.INFO, format=LOG_FMT)
 
     # not used in this stub but often useful for finding various files
     project_dir = Path(__file__).resolve().parents[2]

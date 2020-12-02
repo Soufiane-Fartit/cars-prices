@@ -1,13 +1,18 @@
 # -*- coding: utf-8 -*-
-import click
-import logging
+
+""" This module is used to train a model on a combination of hyperparameters and data """
+
 from pathlib import Path
+import logging
 import os
 import json
+import click
 import pandas as pd
+from sklearn.ensemble import RandomForestRegressor
 from utils_func import update_history, id_generator, save_model
 
 # pylint: disable=no-value-for-parameter
+# pylint: disable=duplicate-code
 @click.command()
 @click.argument(
     "input_filepath", default="data/processed/", type=click.Path(exists=True)
@@ -22,22 +27,21 @@ def main(input_filepath, output_filepath, params_path):
     logger = logging.getLogger(__name__)
 
     # LOADING MODEL PARAMETERS
-    with open(str(project_dir) + "/" + params_path, "r") as f:
-        params = json.load(f)
+    with open(str(project_dir) + "/" + params_path, "r") as infile:
+        params = json.load(infile)
     logger.info("loaded model parameters")
     print(params)
 
     # LOADING DATA FEATURES
     logger.info("loading data features")
-    df = pd.read_csv(input_filepath + "dataset.csv", low_memory=False)
-    X, y = df.drop("price", axis=1), df["price"]
+    data = pd.read_csv(input_filepath + "dataset.csv", low_memory=False)
+    features, targets = data.drop("price", axis=1), data["price"]
 
     # TRAINING MODEL
     logger.info("training model")
-    from sklearn.ensemble import RandomForestRegressor
 
     regr = RandomForestRegressor(**params)
-    regr.fit(X, y)
+    regr.fit(features, targets)
 
     # SAVING MODEL
     logger.info("saving model")
@@ -54,8 +58,8 @@ def main(input_filepath, output_filepath, params_path):
     # SAVING THE HYPERPARAMETERS USED TO TRAIN THE MODEL IN THE RUN DIRECTORY
     with open(
         output_filepath + "models-training/run_" + model_id + "/params.json", "w"
-    ) as f:
-        json.dump(params, f)
+    ) as outfile:
+        json.dump(params, outfile)
 
     logger.info("model saved")
 
@@ -73,8 +77,8 @@ def main(input_filepath, output_filepath, params_path):
 
 
 if __name__ == "__main__":
-    log_fmt = "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
-    logging.basicConfig(level=logging.INFO, format=log_fmt)
+    LOG_FMT = "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+    logging.basicConfig(level=logging.INFO, format=LOG_FMT)
 
     # not used in this stub but often useful for finding various files
     project_dir = Path(__file__).resolve().parents[2]

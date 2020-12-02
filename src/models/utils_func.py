@@ -1,3 +1,10 @@
+# -*- coding: utf-8 -*-
+
+""" This module offers util functions to be called and used in other modules """
+
+from datetime import datetime
+import json
+import pickle
 import string
 import random
 
@@ -23,7 +30,6 @@ def save_model(path, model):
         path (str): path where to save the model
         model (binary): the model to be saved
     """
-    import pickle
 
     with open(path, "wb") as file:
         pickle.dump(model, file)
@@ -40,8 +46,6 @@ def update_history(models_hist_path, model_id, model_name, model, params):
         params (dict): dictionnary containing the hyper-parameters
                         used to fit the model
     """
-    from datetime import datetime
-    import json
 
     model_metadata = dict()
     model_metadata["trained"] = str(datetime.now())
@@ -50,14 +54,14 @@ def update_history(models_hist_path, model_id, model_name, model, params):
     model_metadata["params"] = params
     print(model_metadata)
 
-    with open(models_hist_path, "r+") as f:
+    with open(models_hist_path, "r+") as outfile:
         try:
-            hist = json.load(f)
+            hist = json.load(outfile)
             hist[model_name] = model_metadata
-            f.seek(0)
-            json.dump(hist, f, indent=4)
+            outfile.seek(0)
+            json.dump(hist, outfile, indent=4)
         except json.decoder.JSONDecodeError:
-            json.dump({model_name: model_metadata}, f, indent=4)
+            json.dump({model_name: model_metadata}, outfile, indent=4)
 
 
 def update_history_add_eval(
@@ -72,13 +76,11 @@ def update_history_add_eval(
         metrics (dict, optional): a dictionnary containing metadata related
                                     to the model evaluation. Defaults to None.
     """
-    from datetime import datetime
-    import json
 
     assert (
-        model_id != None or model_name != None
+        model_id is not None or model_name is not None
     ), "At least the model id or name must be given"
-    assert models_hist_path != None, "You must specify the path to the history file"
+    assert models_hist_path is not None, "You must specify the path to the history file"
 
     if not model_name:
         model_name = "model_" + model_id + ".pkl"
@@ -87,11 +89,11 @@ def update_history_add_eval(
     eval_metadata["datetime"] = str(datetime.now())
     eval_metadata["metrics"] = metrics
 
-    with open(models_hist_path, "r+") as f:
+    with open(models_hist_path, "r+") as outfile:
         try:
-            hist = json.load(f)
+            hist = json.load(outfile)
             hist[model_name]["evaluation"] = eval_metadata
-            f.seek(0)
-            json.dump(hist, f, indent=4)
+            outfile.seek(0)
+            json.dump(hist, outfile, indent=4)
         except json.decoder.JSONDecodeError:
             print("cannot save evaluation metadata")

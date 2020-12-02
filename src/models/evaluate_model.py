@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
-import click
 import logging
 from pathlib import Path
 import json
+import click
 import pandas as pd
 
 """
@@ -29,6 +29,7 @@ print(mean_absolute_error(Y_test, Y_predicted))
 """
 
 # pylint: disable=no-value-for-parameter
+# pylint: disable=duplicate-code
 @click.command()
 @click.argument(
     "input_filepath", default="data/processed/", type=click.Path(exists=True)
@@ -49,8 +50,8 @@ def main(input_filepath, output_filepath, params_path):
 
 
 if __name__ == "__main__":
-    log_fmt = "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
-    logging.basicConfig(level=logging.INFO, format=log_fmt)
+    LOG_FMT = "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+    logging.basicConfig(level=logging.INFO, format=LOG_FMT)
 
     # not used in this stub but often useful for finding various files
     project_dir = Path(__file__).resolve().parents[2]

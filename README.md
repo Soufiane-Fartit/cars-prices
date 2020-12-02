@@ -1,3 +1,5 @@
+![CI](https://github.com/Soufiane-Fartit/cars-prices/workflows/CI/badge.svg)
+
 cars-prices
 ==============================
 

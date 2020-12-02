@@ -7,13 +7,17 @@ import json
 import pandas as pd
 from utils_func import update_history, id_generator, save_model
 
-
+# pylint: disable=no-value-for-parameter
 @click.command()
 @click.argument(
     "input_filepath", default="data/processed/", type=click.Path(exists=True)
 )
-@click.argument("output_filepath", default="models/", type=click.Path())
-@click.argument("params_path", default="/models/parameters.json", type=click.Path())
+@click.argument(
+    "output_filepath", default="models/", type=click.Path()
+)
+@click.argument(
+    "params_path", default="/models/parameters.json", type=click.Path()
+)
 def main(input_filepath, output_filepath, params_path):
     """Runs data processing scripts to turn raw data from (../raw) into
     cleaned data ready to be analyzed (saved in ../interim).

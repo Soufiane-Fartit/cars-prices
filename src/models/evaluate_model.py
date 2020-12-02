@@ -28,13 +28,17 @@ print(mean_absolute_error(Y_test, Y_predicted))
 
 """
 
-
+# pylint: disable=no-value-for-parameter
 @click.command()
 @click.argument(
     "input_filepath", default="data/processed/", type=click.Path(exists=True)
 )
-@click.argument("output_filepath", default="models/", type=click.Path())
-@click.argument("params_path", default="/src/models/parameters.json", type=click.Path())
+@click.argument(
+    "output_filepath", default="models/", type=click.Path()
+)
+@click.argument(
+    "params_path", default="/src/models/parameters.json", type=click.Path()
+)
 def main(input_filepath, output_filepath, params_path):
 
     """

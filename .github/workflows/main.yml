@@ -34,9 +34,13 @@ jobs:
           python-version: 3.8.2
 
       # Runs a set of commands using the runners shell
-      - name: Install dependencies
+      - name: Install dependencies 1
         run: |
           pip install --upgrade pip
+          
+      # Runs a set of commands using the runners shell
+      - name: Install dependencies 2
+        run: |
 	  pip install -r requirements.txt
 
       # Runs a set of commands using the runners shell

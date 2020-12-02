@@ -32,7 +32,7 @@ if __name__ == '__main__':
     # load up the .env entries as environment variables
     #load_dotenv(find_dotenv())
 
-    model_id = '6j0897'
-    modelfile = str(project_dir)+'/models/model_'+model_id+'.pkl'
+    model_id = 'fbgjqx'
+    modelfile = str(project_dir)+'/models/models-training/run_'+model_id+'/model.pkl'
     model = pickle.load(open(modelfile, 'rb'))
     app.run(debug=True, host='0.0.0.0', port=5051)

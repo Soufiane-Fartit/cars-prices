@@ -2,6 +2,7 @@
 import click
 import logging
 from pathlib import Path
+import os
 import pickle
 import json
 import pandas as pd
@@ -11,7 +12,8 @@ from utils_func import update_history, id_generator, save_model
 @click.command()
 @click.argument('input_filepath', default='data/processed/', type=click.Path(exists=True))
 @click.argument('output_filepath', default='models/', type=click.Path())
-@click.argument('params_path', default='/src/models/parameters.json', type=click.Path())
+#@click.argument('params_path', default='/src/models/parameters.json', type=click.Path())
+@click.argument('params_path', default='/models/parameters.json', type=click.Path())
 def main(input_filepath, output_filepath, params_path):
     """ Runs data processing scripts to turn raw data from (../raw) into
         cleaned data ready to be analyzed (saved in ../interim).
@@ -47,14 +49,18 @@ def main(input_filepath, output_filepath, params_path):
     """
     logger.info('saving model')
     model_id = id_generator()
-    model_name = "model_"+model_id+".pkl"
-    save_model(output_filepath+model_name, regr)
+    if not os.path.exists(output_filepath+"models-training/run_"+model_id):
+        os.makedirs(output_filepath+"models-training/run_"+model_id)
+    model_name = "model_"+model_id
+    save_model(output_filepath+"models-training/run_"+model_id+"/model.pkl", regr)
+    with open(output_filepath+"models-training/run_"+model_id+"/params.json", 'w') as f:
+        json.dump(params, f)
     logger.info('model saved')
 
     """
     LOGGING MODEL INTO HISTORY FILE
     """
-    update_history(output_filepath+'models_history.json', model_id, model_name, regr, params)
+    update_history(output_filepath+'models-training/models_history.json', model_id, model_name, regr, params)
     logger.info('saved model metadata')
 
     return 0

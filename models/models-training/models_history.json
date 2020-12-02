@@ -129,5 +129,83 @@
                 "mse": 1.27
             }
         }
+    },
+    "model_.pkl": {
+        "trained": "2020-12-02 02:21:07.168861",
+        "model_type": "RandomForestRegressor",
+        "model_id": "cqapz6",
+        "params": {
+            "bootstrap": false,
+            "max_depth": 69,
+            "max_features": 0.28359876180715704,
+            "min_samples_leaf": 2,
+            "min_samples_split": 0.02943675068727039,
+            "n_estimators": 87
+        }
+    },
+    "model_fbgjqx": {
+        "trained": "2020-12-02 02:24:10.192186",
+        "model_type": "RandomForestRegressor",
+        "model_id": "fbgjqx",
+        "params": {
+            "bootstrap": false,
+            "max_depth": 69,
+            "max_features": 0.28359876180715704,
+            "min_samples_leaf": 2,
+            "min_samples_split": 0.02943675068727039,
+            "n_estimators": 87
+        }
+    },
+    "model_84hxa0": {
+        "trained": "2020-12-02 02:29:23.320327",
+        "model_type": "RandomForestRegressor",
+        "model_id": "84hxa0",
+        "params": {
+            "bootstrap": false,
+            "max_depth": 6,
+            "max_features": 0.28359876180715704,
+            "min_samples_leaf": 2,
+            "min_samples_split": 0.02943675068727039,
+            "n_estimators": 87
+        }
+    },
+    "model_azpfp6": {
+        "trained": "2020-12-02 02:32:08.082802",
+        "model_type": "RandomForestRegressor",
+        "model_id": "azpfp6",
+        "params": {
+            "bootstrap": false,
+            "max_depth": 6,
+            "max_features": 0.28359876180715704,
+            "min_samples_leaf": 2,
+            "min_samples_split": 0.02943675068727039,
+            "n_estimators": 87
+        }
+    },
+    "model_rkj59u": {
+        "trained": "2020-12-02 02:33:12.754574",
+        "model_type": "RandomForestRegressor",
+        "model_id": "rkj59u",
+        "params": {
+            "bootstrap": false,
+            "max_depth": 6,
+            "max_features": 0.28359876180715704,
+            "min_samples_leaf": 2,
+            "min_samples_split": 0.02943675068727039,
+            "n_estimators": 87
+        }
+    },
+    "model_z6ffpq": {
+        "trained": "2020-12-02 02:36:35.538370",
+        "model_type": "RandomForestRegressor",
+        "model_id": "z6ffpq",
+        "params": {
+            "bootstrap": false,
+            "max_depth": 69,
+            "max_features": 0.28359876180715704,
+            "min_samples_leaf": 2,
+            "min_samples_split": 0.02943675068727039,
+            "n_estimators": 87
+        }
     }
 }

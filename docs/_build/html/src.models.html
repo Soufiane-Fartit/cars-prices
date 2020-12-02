@@ -57,16 +57,11 @@
 <div class="section" id="src-models-model-finetuning-module">
 <h2>src.models.model_finetuning module<a class="headerlink" href="#src-models-model-finetuning-module" title="Permalink to this headline">¶</a></h2>
 </div>
-<div class="section" id="module-src.models.predict_model">
-<span id="src-models-predict-model-module"></span><h2>src.models.predict_model module<a class="headerlink" href="#module-src.models.predict_model" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="src-models-predict-model-module">
+<h2>src.models.predict_model module<a class="headerlink" href="#src-models-predict-model-module" title="Permalink to this headline">¶</a></h2>
 </div>
-<div class="section" id="module-src.models.serve_model">
-<span id="src-models-serve-model-module"></span><h2>src.models.serve_model module<a class="headerlink" href="#module-src.models.serve_model" title="Permalink to this headline">¶</a></h2>
-<dl class="py function">
-<dt id="src.models.serve_model.makecalc">
-<code class="sig-prename descclassname">src.models.serve_model.</code><code class="sig-name descname">makecalc</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.models.serve_model.makecalc" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
+<div class="section" id="src-models-serve-model-module">
+<h2>src.models.serve_model module<a class="headerlink" href="#src-models-serve-model-module" title="Permalink to this headline">¶</a></h2>
 </div>
 <div class="section" id="src-models-test-serving-module">
 <h2>src.models.test_serving module<a class="headerlink" href="#src-models-test-serving-module" title="Permalink to this headline">¶</a></h2>
@@ -76,6 +71,24 @@
 </div>
 <div class="section" id="module-src.models.utils_func">
 <span id="src-models-utils-func-module"></span><h2>src.models.utils_func module<a class="headerlink" href="#module-src.models.utils_func" title="Permalink to this headline">¶</a></h2>
+<p>This module offers util functions to be called and used
+in other modules</p>
+<dl class="py function">
+<dt id="src.models.utils_func.generate_features_importance_plot">
+<code class="sig-prename descclassname">src.models.utils_func.</code><code class="sig-name descname">generate_features_importance_plot</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">model</span></em>, <em class="sig-param"><span class="n">features</span></em>, <em class="sig-param"><span class="n">model_id</span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.models.utils_func.generate_features_importance_plot" title="Permalink to this definition">¶</a></dt>
+<dd><p>GENERATES A PLOT DESCRIBING FEATURES IMPORTANCE FOR THE MODEL
+TO MAKE THE PREDICTION.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>model</strong> (<em>tree-based model</em>) – a tree based model (decision tree, random forest …)</p></li>
+<li><p><strong>features</strong> (<em>pandas dataframe</em>) – a table of the features on which we trained the model</p></li>
+<li><p><strong>model_id</strong> (<em>str</em>) – the unique id of the model</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
 <dl class="py function">
 <dt id="src.models.utils_func.id_generator">
 <code class="sig-prename descclassname">src.models.utils_func.</code><code class="sig-name descname">id_generator</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">size</span><span class="o">=</span><span class="default_value">6</span></em>, <em class="sig-param"><span class="n">chars</span><span class="o">=</span><span class="default_value">'abcdefghijklmnopqrstuvwxyz0123456789'</span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.models.utils_func.id_generator" title="Permalink to this definition">¶</a></dt>
@@ -93,6 +106,22 @@ Defaults to string.ascii_lowercase+string.digits.</p></li>
 </dd>
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p>[str]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="src.models.utils_func.plot_trees">
+<code class="sig-prename descclassname">src.models.utils_func.</code><code class="sig-name descname">plot_trees</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">rf</span></em>, <em class="sig-param"><span class="n">feature_names</span></em>, <em class="sig-param"><span class="n">target_names</span></em>, <em class="sig-param"><span class="n">model_id</span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.models.utils_func.plot_trees" title="Permalink to this definition">¶</a></dt>
+<dd><p>GENERATES A PLOT THAT SHOWS THE DECISION MAKING OF THE TREES</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>rf</strong> (<em>model</em>) – a tree based model (random forest …)</p></li>
+<li><p><strong>feature_names</strong> (<em>list</em>) – names of the columns of the training set</p></li>
+<li><p><strong>target_names</strong> (<em>str</em>) – name of the target columns</p></li>
+<li><p><strong>model_id</strong> (<em>str</em>) – unique id of the model</p></li>
+</ul>
 </dd>
 </dl>
 </dd></dl>
@@ -165,8 +194,8 @@ to the model evaluation. Defaults to None.</p></li>
 <li><a class="reference internal" href="#submodules">Submodules</a></li>
 <li><a class="reference internal" href="#module-src.models.evaluate_model">src.models.evaluate_model module</a></li>
 <li><a class="reference internal" href="#src-models-model-finetuning-module">src.models.model_finetuning module</a></li>
-<li><a class="reference internal" href="#module-src.models.predict_model">src.models.predict_model module</a></li>
-<li><a class="reference internal" href="#module-src.models.serve_model">src.models.serve_model module</a></li>
+<li><a class="reference internal" href="#src-models-predict-model-module">src.models.predict_model module</a></li>
+<li><a class="reference internal" href="#src-models-serve-model-module">src.models.serve_model module</a></li>
 <li><a class="reference internal" href="#src-models-test-serving-module">src.models.test_serving module</a></li>
 <li><a class="reference internal" href="#src-models-train-model-module">src.models.train_model module</a></li>
 <li><a class="reference internal" href="#module-src.models.utils_func">src.models.utils_func module</a></li>

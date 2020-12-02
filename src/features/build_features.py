@@ -8,12 +8,8 @@ import pandas as pd
 
 # pylint: disable=no-value-for-parameter
 @click.command()
-@click.argument(
-    "input_filepath", default="data/interim/", type=click.Path(exists=True)
-)
-@click.argument(
-    "output_filepath", default="data/processed/", type=click.Path()
-)
+@click.argument("input_filepath", default="data/interim/", type=click.Path(exists=True))
+@click.argument("output_filepath", default="data/processed/", type=click.Path())
 def main(input_filepath, output_filepath):
     """Runs data processing scripts to turn iterim data from (../interim) into
     features (saved in ../processed).

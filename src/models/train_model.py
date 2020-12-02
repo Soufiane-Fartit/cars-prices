@@ -12,12 +12,8 @@ from utils_func import update_history, id_generator, save_model
 @click.argument(
     "input_filepath", default="data/processed/", type=click.Path(exists=True)
 )
-@click.argument(
-    "output_filepath", default="models/", type=click.Path()
-)
-@click.argument(
-    "params_path", default="/models/parameters.json", type=click.Path()
-)
+@click.argument("output_filepath", default="models/", type=click.Path())
+@click.argument("params_path", default="/models/parameters.json", type=click.Path())
 def main(input_filepath, output_filepath, params_path):
     """Runs data processing scripts to turn raw data from (../raw) into
     cleaned data ready to be analyzed (saved in ../interim).
@@ -26,7 +22,7 @@ def main(input_filepath, output_filepath, params_path):
     logger = logging.getLogger(__name__)
 
     # LOADING MODEL PARAMETERS
-    with open(str(project_dir) + params_path, "r") as f:
+    with open(str(project_dir) + "/" + params_path, "r") as f:
         params = json.load(f)
     logger.info("loaded model parameters")
     print(params)

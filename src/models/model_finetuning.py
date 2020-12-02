@@ -18,12 +18,8 @@ from utils_func import id_generator
 @click.argument(
     "input_filepath", default="data/processed/", type=click.Path(exists=True)
 )
-@click.argument(
-    "output_filepath", default="models/", type=click.Path()
-)
-@click.argument(
-    "params_path", default="/models/parameters.json", type=click.Path()
-)
+@click.argument("output_filepath", default="models/", type=click.Path())
+@click.argument("params_path", default="/models/parameters.json", type=click.Path())
 def main(input_filepath, output_filepath, params_path):
     """Finds the best hyperparameters for the model
     and save them as in (parameters.json)
@@ -99,7 +95,7 @@ def main(input_filepath, output_filepath, params_path):
         json.dump(search.best_params_, f)
 
     # SAVING THE BEST HYPERPARAMETERS TO BE USED IN THE FUTURE
-    with open(str(project_dir) + params_path, "w") as f:
+    with open(str(project_dir) + "/" + params_path, "w") as f:
         json.dump(search.best_params_, f)
     logger.info("saved model parameters")
 

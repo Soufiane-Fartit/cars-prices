@@ -26,17 +26,39 @@ requirements: test_environment
 	$(PYTHON_INTERPRETER) -m pip install -r requirements.txt
 
 ## Make Dataset
-data: requirements
-	$(PYTHON_INTERPRETER) src/data/make_dataset.py data/raw data/processed
+data: 
+	$(PYTHON_INTERPRETER) src/data/make_dataset.py data/raw/ data/interim/
+
+## Make Features
+features: data
+	$(PYTHON_INTERPRETER) src/features/build_features.py data/interim/ data/processed/
+
+## Train model
+hypersearch:
+	$(PYTHON_INTERPRETER) src/models/model_finetuning.py data/processed/ models/ models/parameters.json
+
+## Train model
+train:
+	$(PYTHON_INTERPRETER) src/models/train_model.py data/processed/ models/ models/parameters.json
 
 ## Delete all compiled Python files
 clean:
 	find . -type f -name "*.py[co]" -delete
 	find . -type d -name "__pycache__" -delete
 
-## Lint using flake8
+## Lint using pylint
 lint:
-	flake8 src
+	pylint src
+
+## format using black
+black:
+	black src
+
+## generate docs using sphinx
+sphinx:
+	sphinx-apidoc -o docs src
+	cd docs
+	make html
 
 ## Upload Data to S3
 sync_data_to_s3:

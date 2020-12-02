@@ -11,9 +11,7 @@ import pandas as pd
 @click.argument(
     "input_filepath", default="data/processed/", type=click.Path(exists=True)
 )
-@click.argument(
-    "output_filepath", default="models/", type=click.Path()
-)
+@click.argument("output_filepath", default="models/", type=click.Path())
 def main(input_filepath, output_filepath):
     """Runs data processing scripts to turn raw data from (../raw) into
     cleaned data ready to be analyzed (saved in ../interim).
@@ -30,7 +28,7 @@ def main(input_filepath, output_filepath):
     pkl_filename = input_filepath + "pickle_model.pkl"
     with open(pkl_filename, "rb") as file:
         regr = pickle.load(file)
-    
+
     print(type(regr))
 
 

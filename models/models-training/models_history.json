@@ -207,5 +207,44 @@
             "min_samples_split": 0.02943675068727039,
             "n_estimators": 87
         }
+    },
+    "model_hf4oee": {
+        "trained": "2020-12-02 10:47:19.613225",
+        "model_type": "RandomForestRegressor",
+        "model_id": "hf4oee",
+        "params": {
+            "bootstrap": false,
+            "max_depth": 69,
+            "max_features": 0.28359876180715704,
+            "min_samples_leaf": 2,
+            "min_samples_split": 0.02943675068727039,
+            "n_estimators": 87
+        }
+    },
+    "model_t9if7p": {
+        "trained": "2020-12-02 10:53:38.605702",
+        "model_type": "RandomForestRegressor",
+        "model_id": "t9if7p",
+        "params": {
+            "bootstrap": false,
+            "max_depth": 69,
+            "max_features": 0.28359876180715704,
+            "min_samples_leaf": 2,
+            "min_samples_split": 0.02943675068727039,
+            "n_estimators": 87
+        }
+    },
+    "model_806xdg": {
+        "trained": "2020-12-02 11:07:16.662513",
+        "model_type": "RandomForestRegressor",
+        "model_id": "806xdg",
+        "params": {
+            "bootstrap": false,
+            "max_depth": 69,
+            "max_features": 0.28359876180715704,
+            "min_samples_leaf": 2,
+            "min_samples_split": 0.02943675068727039,
+            "n_estimators": 87
+        }
     }
 }

@@ -37,6 +37,10 @@ features: data
 hypersearch:
 	$(PYTHON_INTERPRETER) src/models/model_finetuning.py data/processed/ models/ models/parameters.json
 
+## Update hyperparameters
+update:
+	$(PYTHON_INTERPRETER) src/models/update_hyperparameters.py
+
 ## Train model
 train:
 	$(PYTHON_INTERPRETER) src/models/train_model.py data/processed/ models/ models/parameters.json

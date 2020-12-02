@@ -1,2 +1,5 @@
 # black src => format code
+# pylint --disable=R,C src
 # /cars-prices/docs$ sphinx-apidoc -o ./ ../src & make  => auto html docs
+
+# python -m pytest -vv --cov=hello test_hello.py

@@ -3,7 +3,6 @@ import click
 import logging
 from pathlib import Path
 import os
-import pickle
 import json
 import pandas as pd
 from utils_func import update_history, id_generator, save_model

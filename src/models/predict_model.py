@@ -26,7 +26,7 @@ def main(input_filepath, output_filepath):
 
     pkl_filename = input_filepath + "pickle_model.pkl"
     with open(pkl_filename, "rb") as file:
-        pickle.load(regr, file)
+        regr = pickle.load(file)
 
 
 if __name__ == "__main__":

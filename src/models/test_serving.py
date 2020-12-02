@@ -1,11 +1,6 @@
 # -*- coding: utf-8 -*-
-import logging
-from pathlib import Path
-from flask import Flask, request, redirect, url_for, flash, jsonify
 import pickle as p
 import requests
-import numpy as np
-import json
 import ast
 import pandas as pd
 

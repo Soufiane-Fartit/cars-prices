@@ -8,11 +8,15 @@ cars-prices documentation!
 
 Contents:
 
+.. automodule:: src
+    :members:
+
 .. toctree::
    :maxdepth: 2
 
    getting-started
    commands
+   src
 
 
 

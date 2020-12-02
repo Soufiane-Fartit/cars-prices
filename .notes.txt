@@ -1,0 +1,2 @@
+# black src => format code
+# /cars-prices/docs$ sphinx-apidoc -o ./ ../src & make  => auto html docs

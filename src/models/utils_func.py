@@ -11,8 +11,9 @@ import string
 import random
 import numpy as np
 import pandas as pd
-from matplotlib import pyplot
+from matplotlib import pyplot as plt
 import seaborn as sns
+from sklearn import tree
 
 def id_generator(size=6, chars=string.ascii_lowercase + string.digits):
     """GENERATE A RANDOM STRING TO BE USED AS AN ID
@@ -121,7 +122,30 @@ def generate_features_importance_plot(model, features, model_id):
     importances = pd.DataFrame([tree.feature_importances_ for tree in model.estimators_],
                             columns=features.columns)
     importances = importances[ordered_columns]
-    _, ax = pyplot.subplots(figsize=(12,8))
+    _, ax = plt.subplots(figsize=(12,8))
     sns.boxplot(x="variable", y="value", ax=ax, data=pd.melt(importances))
     figure = ax.get_figure()
     figure.savefig('models/models-training/run_'+model_id+'/features_importance.png')
+
+
+def plot_trees(rf,feature_names, target_names, model_id):
+    """GENERATES A PLOT THAT SHOWS THE DECISION MAKING OF THE TREES
+
+    Args:
+        rf (model): a tree based model (random forest ...)
+        feature_names (list): names of the columns of the training set
+        target_names (str): name of the target columns
+        model_id (str): unique id of the model
+    """
+    fn = feature_names
+    cn = target_names
+    fig, axes = plt.subplots(nrows = 1,ncols = 5,figsize = (10,2), dpi=900)
+    for index in range(0, 5):
+        tree.plot_tree(rf.estimators_[index],
+                    feature_names = fn, 
+                    class_names=cn,
+                    filled = True,
+                    ax = axes[index]);
+
+        axes[index].set_title('Estimator: ' + str(index), fontsize = 11)
+    fig.savefig('models/models-training/run_'+model_id+'/Trees.png')

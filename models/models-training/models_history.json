@@ -363,5 +363,31 @@
             "min_samples_split": 0.02943675068727039,
             "n_estimators": 87
         }
+    },
+    "model_ie4kdo": {
+        "trained": "2020-12-02 20:32:23.389044",
+        "model_type": "RandomForestRegressor",
+        "model_id": "ie4kdo",
+        "params": {
+            "bootstrap": false,
+            "max_depth": 6,
+            "max_features": 0.28359876180715704,
+            "min_samples_leaf": 2,
+            "min_samples_split": 0.02943675068727039,
+            "n_estimators": 87
+        }
+    },
+    "model_x5glbr": {
+        "trained": "2020-12-02 20:36:07.719814",
+        "model_type": "RandomForestRegressor",
+        "model_id": "x5glbr",
+        "params": {
+            "bootstrap": false,
+            "max_depth": 6,
+            "max_features": 0.28359876180715704,
+            "min_samples_leaf": 2,
+            "min_samples_split": 0.02943675068727039,
+            "n_estimators": 87
+        }
     }
 }

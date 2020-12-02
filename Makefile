@@ -68,8 +68,7 @@ black:
 ## generate docs using sphinx
 sphinx:
 	sphinx-apidoc -o docs src
-	cd docs
-	make html
+	cd docs && $(MAKE) html
 
 ## Upload Data to S3
 sync_data_to_s3:

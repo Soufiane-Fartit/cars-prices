@@ -9,7 +9,7 @@ import json
 import click
 import pandas as pd
 from sklearn.ensemble import RandomForestRegressor
-from utils_func import update_history, id_generator, save_model, generate_features_importance_plot
+from utils_func import update_history, id_generator, save_model, generate_features_importance_plot, plot_trees
 
 # pylint: disable=no-value-for-parameter
 # pylint: disable=duplicate-code
@@ -74,6 +74,9 @@ def main(input_filepath, output_filepath, params_path):
         # SAVING FEATURES IMPORTANCE PLOT
     generate_features_importance_plot(regr, features, model_id)
     
+        # SAVING TREES PLOT
+    plot_trees(regr,features.columns, 'price', model_id)
+
     # SAVING THE HYPERPARAMETERS USED TO TRAIN THE MODEL IN THE RUN DIRECTORY
     with open(
         output_filepath + "models-training/run_" + model_id + "/params.json", "w"

@@ -34,14 +34,19 @@ jobs:
           python-version: 3.8.6
 
       # Runs a set of commands using the runners shell
-      - name: Install dependencies 1
+      - name: Upgrade pip
         run: |
           pip install --upgrade pip
           
       # Runs a set of commands using the runners shell
-      - name: Install dependencies 2
+      - name: Install dependencies
         run: |
           pip install -r requirements.txt
+          
+      # Runs a set of commands using the runners shell
+      - name: Test environment
+        run: |
+          python test_environment.py
 
       # Runs a set of commands using the runners shell
       - name: Lint

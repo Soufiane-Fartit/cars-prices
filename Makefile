@@ -41,6 +41,13 @@ hypersearch:
 train:
 	$(PYTHON_INTERPRETER) src/models/train_model.py data/processed/ models/ models/parameters.json
 
+## Serve model through API
+serve:
+	$(PYTHON_INTERPRETER) src/models/serve_model.py -p=5000 -m=fbgjqx
+
+test serve:
+	$(PYTHON_INTERPRETER) src/tests/test_serving.py -p=5000
+
 ## Delete all compiled Python files
 clean:
 	find . -type f -name "*.py[co]" -delete

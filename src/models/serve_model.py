@@ -1,11 +1,20 @@
 # -*- coding: utf-8 -*-
 import logging
 from pathlib import Path
-from flask import Flask, request, redirect, url_for, flash, jsonify
+from flask import Flask, request
 import pickle
 import numpy as np
-import json
+import argparse
 
+
+parser = argparse.ArgumentParser()
+parser.add_argument("-p", "--port", default=5000,
+                    help="port of the api")
+parser.add_argument("-m", "--model_id", default="fbgjqx",
+                    help="port of the api")
+args = parser.parse_args()
+port = args.port
+model_id = args.model_id
 
 app = Flask(__name__)
 
@@ -32,9 +41,11 @@ if __name__ == "__main__":
     # load up the .env entries as environment variables
     # load_dotenv(find_dotenv())
 
-    model_id = "fbgjqx"
     modelfile = (
         str(project_dir) + "/models/models-training/run_" + model_id + "/model.pkl"
     )
+
+    print(f'Using model : {model_id}')
+
     model = pickle.load(open(modelfile, "rb"))
-    app.run(debug=True, host="0.0.0.0", port=5051)
+    app.run(debug=True, host="0.0.0.0", port=port)

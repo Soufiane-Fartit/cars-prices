@@ -15,7 +15,6 @@ def makecalc():
     data = request.get_json()
     data_list = data['data']
     data_array = np.array(data_list)
-    #prediction = np.array2string(model.predict(data_array))
     prediction = model.predict(data_array)
     pred_list = prediction.tolist()
 

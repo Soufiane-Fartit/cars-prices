@@ -9,7 +9,10 @@ import json
 import pickle
 import string
 import random
-
+import numpy as np
+import pandas as pd
+from matplotlib import pyplot
+import seaborn as sns
 
 def id_generator(size=6, chars=string.ascii_lowercase + string.digits):
     """GENERATE A RANDOM STRING TO BE USED AS AN ID
@@ -101,3 +104,24 @@ def update_history_add_eval(
             json.dump(hist, outfile, indent=4)
         except json.decoder.JSONDecodeError:
             print("cannot save evaluation metadata")
+
+
+def generate_features_importance_plot(model, features, model_id):
+    """GENERATES A PLOT DESCRIBING FEATURES IMPORTANCE FOR THE MODEL
+    TO MAKE THE PREDICTION.
+
+    Args:
+        model (tree-based model): a tree based model (decision tree, random forest ...)
+        features (pandas dataframe): a table of the features on which we trained the model
+        model_id (str): the unique id of the model
+    """
+    mean_importances = model.feature_importances_
+    importances_indices = np.argsort(mean_importances)[::-1]
+    ordered_columns = [features.columns[i] for i in importances_indices]
+    importances = pd.DataFrame([tree.feature_importances_ for tree in model.estimators_],
+                            columns=features.columns)
+    importances = importances[ordered_columns]
+    _, ax = pyplot.subplots(figsize=(12,8))
+    sns.boxplot(x="variable", y="value", ax=ax, data=pd.melt(importances))
+    figure = ax.get_figure()
+    figure.savefig('models/models-training/run_'+model_id+'/features_importance.png')

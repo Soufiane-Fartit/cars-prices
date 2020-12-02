@@ -246,5 +246,122 @@
             "min_samples_split": 0.02943675068727039,
             "n_estimators": 87
         }
+    },
+    "model_omg0d4": {
+        "trained": "2020-12-02 19:17:16.266149",
+        "model_type": "RandomForestRegressor",
+        "model_id": "omg0d4",
+        "params": {
+            "bootstrap": false,
+            "max_depth": 69,
+            "max_features": 0.28359876180715704,
+            "min_samples_leaf": 2,
+            "min_samples_split": 0.02943675068727039,
+            "n_estimators": 87
+        }
+    },
+    "model_cp1lo3": {
+        "trained": "2020-12-02 19:19:44.837770",
+        "model_type": "RandomForestRegressor",
+        "model_id": "cp1lo3",
+        "params": {
+            "bootstrap": false,
+            "max_depth": 69,
+            "max_features": 0.28359876180715704,
+            "min_samples_leaf": 2,
+            "min_samples_split": 0.02943675068727039,
+            "n_estimators": 87
+        }
+    },
+    "model_moxwyq": {
+        "trained": "2020-12-02 19:26:49.652010",
+        "model_type": "RandomForestRegressor",
+        "model_id": "moxwyq",
+        "params": {
+            "bootstrap": false,
+            "max_depth": 6,
+            "max_features": 0.28359876180715704,
+            "min_samples_leaf": 2,
+            "min_samples_split": 0.02943675068727039,
+            "n_estimators": 87
+        }
+    },
+    "model_2gn82v": {
+        "trained": "2020-12-02 19:57:28.654933",
+        "model_type": "RandomForestRegressor",
+        "model_id": "2gn82v",
+        "params": {
+            "bootstrap": false,
+            "max_depth": 6,
+            "max_features": 0.28359876180715704,
+            "min_samples_leaf": 2,
+            "min_samples_split": 0.02943675068727039,
+            "n_estimators": 87
+        }
+    },
+    "model_l81rix": {
+        "trained": "2020-12-02 19:59:11.072596",
+        "model_type": "RandomForestRegressor",
+        "model_id": "l81rix",
+        "params": {
+            "bootstrap": false,
+            "max_depth": 6,
+            "max_features": 0.28359876180715704,
+            "min_samples_leaf": 2,
+            "min_samples_split": 0.02943675068727039,
+            "n_estimators": 87
+        }
+    },
+    "model_7a1y87": {
+        "trained": "2020-12-02 20:05:59.188553",
+        "model_type": "RandomForestRegressor",
+        "model_id": "7a1y87",
+        "params": {
+            "bootstrap": false,
+            "max_depth": 6,
+            "max_features": 0.28359876180715704,
+            "min_samples_leaf": 2,
+            "min_samples_split": 0.02943675068727039,
+            "n_estimators": 87
+        }
+    },
+    "model_nbvoxa": {
+        "trained": "2020-12-02 20:08:27.742996",
+        "model_type": "RandomForestRegressor",
+        "model_id": "nbvoxa",
+        "params": {
+            "bootstrap": false,
+            "max_depth": 6,
+            "max_features": 0.28359876180715704,
+            "min_samples_leaf": 2,
+            "min_samples_split": 0.02943675068727039,
+            "n_estimators": 87
+        }
+    },
+    "model_anbzv1": {
+        "trained": "2020-12-02 20:15:12.566051",
+        "model_type": "RandomForestRegressor",
+        "model_id": "anbzv1",
+        "params": {
+            "bootstrap": false,
+            "max_depth": 6,
+            "max_features": 0.28359876180715704,
+            "min_samples_leaf": 2,
+            "min_samples_split": 0.02943675068727039,
+            "n_estimators": 87
+        }
+    },
+    "model_c171nb": {
+        "trained": "2020-12-02 20:19:12.007560",
+        "model_type": "RandomForestRegressor",
+        "model_id": "c171nb",
+        "params": {
+            "bootstrap": false,
+            "max_depth": 6,
+            "max_features": 0.28359876180715704,
+            "min_samples_leaf": 2,
+            "min_samples_split": 0.02943675068727039,
+            "n_estimators": 87
+        }
     }
 }

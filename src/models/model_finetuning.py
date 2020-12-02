@@ -2,9 +2,14 @@
 import click
 import logging
 from pathlib import Path
+import os
 import json
 from scipy.stats import uniform, truncnorm, randint
 import pandas as pd
+import plotly.express as px
+import plotly.io as pio
+pio.orca.config.executable = '/usr/local/bin/orca'
+from utils_func import id_generator
 
 
 @click.command()
@@ -33,11 +38,26 @@ def main(input_filepath, output_filepath, params_path):
                'min_samples_leaf': randint(1,5),
                'bootstrap': [True, False]}
 
-    regr_random = RandomizedSearchCV(estimator = regr, param_distributions = random_grid, n_iter = 100, cv = 3, verbose=2, random_state=42, n_jobs = -1)
+    regr_random = RandomizedSearchCV(estimator = regr, param_distributions = random_grid, n_iter = 10, cv = 3, verbose=2, random_state=42, n_jobs = -1)
     search = regr_random.fit(X, y)
     logger.info('best hyperparameters found')
+
     print(search.best_params_)
 
+    
+    run_id = "run_"+id_generator()
+    if not os.path.exists(output_filepath+"hyperparams-search/"+run_id):
+        os.makedirs(output_filepath+"hyperparams-search/"+run_id)
+
+    cv_result = search.cv_results_
+    cv_result.pop('params')
+    cv_result = pd.DataFrame(cv_result)
+    
+    cv_result.to_csv(output_filepath+"hyperparams-search/"+run_id+"/result.csv", index=False)
+    fig = px.parallel_coordinates(cv_result, color="mean_test_score")
+    fig.write_image(output_filepath+"hyperparams-search/"+run_id+"/parallelcoordinatesplot.png", height=600, width=1100)
+    with open(output_filepath+"hyperparams-search/"+run_id+"/best_parameters.json", 'w') as f:
+        json.dump(search.best_params_, f)
     with open(str(project_dir)+params_path, 'w') as f:
         json.dump(search.best_params_, f)
     logger.info('saved model parameters')

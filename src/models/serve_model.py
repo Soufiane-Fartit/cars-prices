@@ -4,20 +4,13 @@
 
 import logging
 from pathlib import Path
-import argparse
+import json
 import pickle
 from flask import Flask, request
 import numpy as np
 
 
-parser = argparse.ArgumentParser()
-parser.add_argument("-p", "--port", default=5000,
-                    help="port of the api")
-parser.add_argument("-m", "--model_id", default="fbgjqx",
-                    help="port of the api")
-args = parser.parse_args()
-port = args.port
-model_id = args.model_id
+
 
 app = Flask(__name__)
 
@@ -48,6 +41,12 @@ if __name__ == "__main__":
     # find .env automagically by walking up directories until it's found, then
     # load up the .env entries as environment variables
     # load_dotenv(find_dotenv())
+
+    with open(str(project_dir) + '/models/deployment.json', "r") as infile:
+        params = json.load(infile)
+    
+    model_id = params["model_id"]
+    port = params["port"]
 
     modelfile = (
         str(project_dir) + "/models/models-training/run_" + model_id + "/model.pkl"

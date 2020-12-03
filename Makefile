@@ -38,7 +38,7 @@ hypersearch:
 	$(PYTHON_INTERPRETER) src/models/model_finetuning.py data/processed/ models/ models/parameters.json
 
 ## Update hyperparameters
-update:
+update-hyperparam:
 	$(PYTHON_INTERPRETER) src/models/update_hyperparameters.py
 
 ## Train model
@@ -47,10 +47,10 @@ train:
 
 ## Serve model through API
 serve:
-	$(PYTHON_INTERPRETER) src/models/serve_model.py -p=5000 -m=fbgjqx
+	$(PYTHON_INTERPRETER) src/models/serve_model.py
 
-test serve:
-	$(PYTHON_INTERPRETER) src/tests/test_serving.py -p=5000
+test-serve:
+	$(PYTHON_INTERPRETER) src/tests/test_serving.py
 
 ## Delete all compiled Python files
 clean:

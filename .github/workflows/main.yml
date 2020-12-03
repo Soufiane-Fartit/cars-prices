@@ -56,10 +56,12 @@ jobs:
 
       # Runs a set of commands using the runners shell
       - name: Black
+        continue-on-error: true
         run: |
           make black
 
       # Runs a set of commands using the runners shell
       - name: Sphinx docs
+        continue-on-error: true
         run: |
           make sphinx

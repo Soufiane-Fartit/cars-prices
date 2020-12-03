@@ -63,7 +63,7 @@ clean:
 
 ## Lint using pylint
 lint:
-	pylint src
+	pylint --disable=R,C src
 
 ## Lint using flake8
 flake8:

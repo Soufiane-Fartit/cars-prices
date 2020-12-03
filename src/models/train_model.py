@@ -9,7 +9,13 @@ import json
 import click
 import pandas as pd
 from sklearn.ensemble import RandomForestRegressor
-from utils_func import update_history, id_generator, save_model, generate_features_importance_plot, plot_trees
+from utils_func import (
+    update_history,
+    id_generator,
+    save_model,
+    generate_features_importance_plot,
+    plot_trees,
+)
 
 # pylint: disable=no-value-for-parameter
 # pylint: disable=duplicate-code
@@ -39,26 +45,9 @@ def main(input_filepath, output_filepath, params_path):
 
     # TRAINING MODEL
     logger.info("training model")
-
     regr = RandomForestRegressor(**params)
     regr.fit(features, targets)
 
-    # MODEL FEATURE IMPORTANCE
-    """
-    import numpy as np
-    from matplotlib import pyplot
-    import seaborn as sns
-    mean_importances = regr.feature_importances_
-    importances_indices = np.argsort(mean_importances)[::-1]
-    ordered_columns = [features.columns[i] for i in importances_indices]
-    importances = pd.DataFrame([tree.feature_importances_ for tree in regr.estimators_],
-                            columns=features.columns)
-    importances = importances[ordered_columns]
-    _, ax = pyplot.subplots(figsize=(12,8))
-    sns.boxplot(x="variable", y="value", ax=ax, data=pd.melt(importances))
-    figure = ax.get_figure()
-    figure.savefig('models/models-training/features_importance.png')
-    """
     # SAVING MODEL
     logger.info("saving model")
     model_id = id_generator()
@@ -71,11 +60,11 @@ def main(input_filepath, output_filepath, params_path):
         # SAVING THE MODEL IN THE RUN DIRECTORY
     save_model(output_filepath + "models-training/run_" + model_id + "/model.pkl", regr)
 
-        # SAVING FEATURES IMPORTANCE PLOT
+    # SAVING FEATURES IMPORTANCE PLOT
     generate_features_importance_plot(regr, features, model_id)
-    
-        # SAVING TREES PLOT
-    plot_trees(regr,features.columns, 'price', model_id)
+
+    # SAVING TREES PLOT
+    plot_trees(regr, features.columns, "price", model_id)
 
     # SAVING THE HYPERPARAMETERS USED TO TRAIN THE MODEL IN THE RUN DIRECTORY
     with open(

@@ -10,8 +10,6 @@ from flask import Flask, request
 import numpy as np
 
 
-
-
 app = Flask(__name__)
 
 
@@ -42,9 +40,9 @@ if __name__ == "__main__":
     # load up the .env entries as environment variables
     # load_dotenv(find_dotenv())
 
-    with open(str(project_dir) + '/models/deployment.json', "r") as infile:
+    with open(str(project_dir) + "/models/deployment.json", "r") as infile:
         params = json.load(infile)
-    
+
     model_id = params["model_id"]
     port = params["port"]
 
@@ -52,7 +50,7 @@ if __name__ == "__main__":
         str(project_dir) + "/models/models-training/run_" + model_id + "/model.pkl"
     )
 
-    print(f'Using model : {model_id}')
+    print(f"Using model : {model_id}")
 
     model = pickle.load(open(modelfile, "rb"))
     app.run(debug=True, host="0.0.0.0", port=port)

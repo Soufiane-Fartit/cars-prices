@@ -9,7 +9,7 @@ import pickle
 import pandas as pd
 
 
-def main(model_id, input_filepath='data/processed/'):
+def main(model_id, input_filepath="data/processed/"):
 
     """
 
@@ -31,22 +31,26 @@ def main(model_id, input_filepath='data/processed/'):
     data = pd.read_csv(input_filepath + "dataset.csv", low_memory=False)
 
     logger.info("making predictions")
-    data['predictions'] = model.predict(data.drop('price', axis=1))
+    data["predictions"] = model.predict(data.drop("price", axis=1))
     print(data.head())
 
     # EVALUATE MODELS' CONSISTENCY ON DIFFERENT BRANDS
-    corrs = data.groupby('brand')[['price', 'predictions']].corr().iloc[0::2,-1]
-    assert corrs.isna().sum() == 0, 'model unstable, NAN values'
-    assert (corrs>0.7).sum() == len(corrs), 'model gives bad predictions for some classes'
-    assert corrs.mean() > 0.8, 'model overall bad'
-    assert corrs.var() < 0.3, 'model have high variance'
+    corrs = data.groupby("brand")[["price", "predictions"]].corr().iloc[0::2, -1]
+    assert corrs.isna().sum() == 0, "model unstable, NAN values"
+    assert (corrs > 0.7).sum() == len(
+        corrs
+    ), "model gives bad predictions for some classes"
+    assert corrs.mean() > 0.8, "model overall bad"
+    assert corrs.var() < 0.3, "model have high variance"
 
     # EVALUATE MODELS' CONSISTENCY ON DIFFERENT BRANDS
-    corrs = data.groupby('model')[['price', 'predictions']].corr().iloc[0::2,-1]
-    assert corrs.isna().sum() == 0, 'model unstable, NAN values'
-    assert (corrs>0.7).sum() == len(corrs), 'model gives bad predictions for some classes'
-    assert corrs.mean() > 0.8, 'model overall bad'
-    assert corrs.var() < 0.3, 'model have high variance'
+    corrs = data.groupby("model")[["price", "predictions"]].corr().iloc[0::2, -1]
+    assert corrs.isna().sum() == 0, "model unstable, NAN values"
+    assert (corrs > 0.7).sum() == len(
+        corrs
+    ), "model gives bad predictions for some classes"
+    assert corrs.mean() > 0.8, "model overall bad"
+    assert corrs.var() < 0.3, "model have high variance"
 
 
 if __name__ == "__main__":
@@ -60,9 +64,9 @@ if __name__ == "__main__":
     # load up the .env entries as environment variables
     # load_dotenv(find_dotenv())
 
-    with open(str(project_dir) + '/models/deployment.json', "r") as infile:
+    with open(str(project_dir) + "/models/deployment.json", "r") as infile:
         params = json.load(infile)
-    
+
     model_id = params["model_id"]
 
     main(model_id)

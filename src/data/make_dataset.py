@@ -4,6 +4,7 @@
 
 import logging
 from pathlib import Path
+
 # from dotenv import find_dotenv, load_dotenv
 import glob
 import click
@@ -51,7 +52,9 @@ def main(input_filepath, output_filepath):
         # clean engine size
         if "engine size2" in data.columns:
             engine_size = pd.to_numeric(data["engine size"], errors="coerce").fillna(-1)
-            engine_size_2 = pd.to_numeric(data["engine size2"], errors="coerce").fillna(-1)
+            engine_size_2 = pd.to_numeric(data["engine size2"], errors="coerce").fillna(
+                -1
+            )
             data["engine size"] = pd.DataFrame([engine_size, engine_size_2]).max(axis=0)
             data.drop("engine size2", axis=1, inplace=True)
 

@@ -8,7 +8,7 @@ import argparse
 
 pd.options.mode.chained_assignment = None
 
-with open('models/deployment.json', "r") as infile:
+with open("models/deployment.json", "r") as infile:
     params = json.load(infile)
 
 port = params["port"]
@@ -32,4 +32,4 @@ df_slice["predictions"] = prediction_list
 # print(df_slice)
 
 assert len(prediction_list) == df.shape[0]
-assert r2_score(df['price'], df['predictions']) > 0.7
+assert r2_score(df["price"], df["predictions"]) > 0.7

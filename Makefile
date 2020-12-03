@@ -45,6 +45,10 @@ update-hyperparam:
 train:
 	$(PYTHON_INTERPRETER) src/models/train_model.py data/processed/ models/ models/parameters.json
 
+## Validate model
+validate:
+	$(PYTHON_INTERPRETER) src/models/validate_model.py
+
 ## Serve model through API
 serve:
 	$(PYTHON_INTERPRETER) src/models/serve_model.py

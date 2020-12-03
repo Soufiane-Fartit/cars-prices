@@ -1,19 +1,19 @@
 # -*- coding: utf-8 -*-
 import requests
 import ast
+import json
 import pandas as pd
 from sklearn.metrics import r2_score
 import argparse
 
 pd.options.mode.chained_assignment = None
 
-parser = argparse.ArgumentParser()
-parser.add_argument("-p", "--port", default=5000,
-                    help="port of the api")
-args = parser.parse_args()
-port = args.port
+with open('models/deployment.json', "r") as infile:
+    params = json.load(infile)
 
-url = "http://0.0.0.0:"+port+"/api/"
+port = params["port"]
+
+url = "http://0.0.0.0:" + str(port) + "/api/"
 
 
 df = pd.read_csv("data/processed/dataset.csv", low_memory=False)

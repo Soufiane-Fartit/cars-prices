@@ -79,9 +79,11 @@ target/
 /data/external/*
 /data/interim/*
 /data/processed/*
+/data/raw/*
 !/data/external/.gitkeep
 !/data/interim/.gitkeep
 !/data/processed/.gitkeep
+!/data/raw/.gitkeep
 
 # exclude previous model and hypersearch runs
 #/models/hyperparams-search/*

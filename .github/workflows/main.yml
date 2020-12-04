@@ -147,9 +147,8 @@ jobs:
         continue-on-error: true
         uses: actions/upload-artifact@v2
         with:
-          name: model
-          path: |
-            cars-price-docker-image.tar
+          name: cars-price-docker-image
+          path: cars-price-docker-image.tar
 
       # Tag the image      
       - name: Tags

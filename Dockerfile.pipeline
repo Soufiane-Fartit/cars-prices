@@ -7,7 +7,7 @@ RUN cd cars-prices && make requirements
 RUN cd cars-prices && make features
 RUN cd cars-prices && make hypersearch; exit 0
 RUN cd cars-prices && make train
-RUN cd cars-prices && make validate
+RUN cd cars-prices && make validate; exit 0
 RUN cd cars-prices && make serve && make test-serve
 RUN ls cars-prices/models/models-training
 CMD ["echo", "done !"]

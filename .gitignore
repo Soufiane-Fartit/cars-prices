@@ -75,13 +75,19 @@ target/
 # Jupyter NB Checkpoints
 .ipynb_checkpoints/
 
-# exclude data from source control by default
+# exclude processed data from source control
 /data/external/*
 /data/interim/*
 /data/processed/*
 !/data/external/.gitkeep
 !/data/interim/.gitkeep
 !/data/processed/.gitkeep
+
+# exclude previous model and hypersearch runs
+/models/hyperparams-search/*
+/models/models-training/*
+!/models/hyperparams-search/.gitkeep
+!/models/models-training/.gitkeep
 
 # Mac OS-specific storage files
 .DS_Store

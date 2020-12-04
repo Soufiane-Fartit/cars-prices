@@ -97,6 +97,18 @@ jobs:
       - name: Train a model
         run: |
           make train
+
+      # Runs a set of commands using the runners shell
+      - name: Validate the model
+        continue-on-error: true
+        run: |
+          make validate
+
+      # Runs a set of commands using the runners shell
+      - name: Test serving the model
+        continue-on-error: true
+        run: |
+          make serve && make test-serve
       
       # Archive model training and hyperparameters search
       - name: Archive model training and hyperparameters search

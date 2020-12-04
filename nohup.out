@@ -9,3 +9,33 @@ Using model : mzysml
 2020-12-04 01:15:12,611 - werkzeug - WARNING -  * Debugger is active!
 2020-12-04 01:15:12,612 - werkzeug - INFO -  * Debugger PIN: 179-745-706
 2020-12-04 01:15:23,605 - werkzeug - INFO - 127.0.0.1 - - [04/Dec/2020 01:15:23] "[37mPOST /api/ HTTP/1.1[0m" 200 -
+Using model : mzysml
+ * Serving Flask app "serve_model" (lazy loading)
+ * Environment: production
+   WARNING: This is a development server. Do not use it in a production deployment.
+   Use a production WSGI server instead.
+ * Debug mode: on
+Traceback (most recent call last):
+  File "src/models/serve_model.py", line 56, in <module>
+    app.run(debug=True, host="0.0.0.0", port=port)
+  File "/home/sfartit/.local/lib/python3.8/site-packages/flask/app.py", line 990, in run
+    run_simple(host, port, self, **options)
+  File "/home/sfartit/.local/lib/python3.8/site-packages/werkzeug/serving.py", line 1030, in run_simple
+    s.bind(server_address)
+OSError: [Errno 98] Address already in use
+2020-12-04 03:02:07,198 - werkzeug - INFO - 127.0.0.1 - - [04/Dec/2020 03:02:07] "[37mPOST /api/ HTTP/1.1[0m" 200 -
+Using model : mzysml
+ * Serving Flask app "serve_model" (lazy loading)
+ * Environment: production
+   WARNING: This is a development server. Do not use it in a production deployment.
+   Use a production WSGI server instead.
+ * Debug mode: on
+Traceback (most recent call last):
+  File "src/models/serve_model.py", line 56, in <module>
+    app.run(debug=True, host="0.0.0.0", port=port)
+  File "/home/sfartit/.local/lib/python3.8/site-packages/flask/app.py", line 990, in run
+    run_simple(host, port, self, **options)
+  File "/home/sfartit/.local/lib/python3.8/site-packages/werkzeug/serving.py", line 1030, in run_simple
+    s.bind(server_address)
+OSError: [Errno 98] Address already in use
+2020-12-04 03:02:46,750 - werkzeug - INFO - 127.0.0.1 - - [04/Dec/2020 03:02:46] "[37mPOST /api/ HTTP/1.1[0m" 200 -

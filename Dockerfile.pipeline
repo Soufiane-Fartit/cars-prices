@@ -1,12 +1,12 @@
 FROM python
 ADD . /cars-prices
 RUN pip install --upgrade pip
-RUN make test_environment
-RUN make requirements
-RUN make features
-RUN make hypersearch
-RUN make train
-RUN make validate
-RUN make serve && make test-serve
-RUN ls models/models-training
+RUN cd cars-prices && make test_environment
+RUN cd cars-prices && make requirements
+RUN cd cars-prices && make features
+RUN cd cars-prices && make hypersearch
+RUN cd cars-prices && make train
+RUN cd cars-prices && make validate
+RUN cd cars-prices && make serve && make test-serve
+RUN ls cars-prices/models/models-training
 CMD ["echo", "done !"]

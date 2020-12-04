@@ -88,3 +88,12 @@ jobs:
       - name: Train a model
         run: |
           make train
+      
+      - name: Archive model training and hyperparameters search
+        continue-on-error: true
+        uses: actions/upload-artifact@v2
+        with:
+          name: model
+          path: |
+            models
+            !models/deployment.json

@@ -22,6 +22,7 @@ endif
 
 ## Install Python Dependencies
 requirements: test_environment
+	conda install -c plotly plotly-orca==1.2.1 psutil requests
 	$(PYTHON_INTERPRETER) -m pip install -U pip setuptools wheel
 	$(PYTHON_INTERPRETER) -m pip install -r requirements.txt
 

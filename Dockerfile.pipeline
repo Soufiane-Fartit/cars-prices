@@ -1,0 +1,12 @@
+FROM python
+ADD . /cars-prices
+RUN pip install --upgrade pip
+RUN make test_environment
+RUN make requirements
+RUN make features
+RUN make hypersearch
+RUN make train
+RUN make validate
+RUN make serve && make test-serve
+RUN ls models/models-training
+CMD ["echo", "done !"]

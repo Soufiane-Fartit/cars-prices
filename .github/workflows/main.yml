@@ -135,7 +135,7 @@ jobs:
 
       # Build docker image
       - name: Build
-        run: docker build -t cars-price .
+        run: docker build -f Dockerfile.pipeline -t cars-price .
 
       # Save docker image
       - name: Save

@@ -88,7 +88,7 @@ target/
 #/models/models-training/*
 #!/models/hyperparams-search/.gitkeep
 #!/models/models-training/.gitkeep
-/models/*
+/models/
 
 # Mac OS-specific storage files
 .DS_Store

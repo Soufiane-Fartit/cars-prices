@@ -16,3 +16,4 @@ plotly
 scikit-learn
 matplotlib
 seaborn
+psutil

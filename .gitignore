@@ -90,6 +90,9 @@ target/
 !/models/models-training/.gitkeep
 /models/models-training/models_history.json
 
+# nohup file
+/nohup.out
+
 # Mac OS-specific storage files
 .DS_Store
 

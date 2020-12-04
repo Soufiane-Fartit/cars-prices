@@ -65,3 +65,21 @@ jobs:
         continue-on-error: true
         run: |
           make sphinx
+
+      # Runs a set of commands using the runners shell
+      - name: Make features from data
+        continue-on-error: true
+        run: |
+          make features
+
+      # Runs a set of commands using the runners shell
+      - name: Search for hyperparameters
+        continue-on-error: true
+        run: |
+          make hypersearch
+
+      # Runs a set of commands using the runners shell
+      - name: Train a model
+        continue-on-error: true
+        run: |
+          make train

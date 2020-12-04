@@ -70,6 +70,13 @@ jobs:
       - name: Make features from data
         run: |
           make features
+      
+      - name: Archive processed data
+        uses: actions/upload-artifact@v2
+        with:
+          name: data-features
+          path: |
+            data/processed/dataset.csv
 
       # Runs a set of commands using the runners shell
       - name: Search for hyperparameters

@@ -25,8 +25,8 @@ requirements: test_environment
 	$(PYTHON_INTERPRETER) -m pip install -U pip setuptools wheel
 	$(PYTHON_INTERPRETER) -m pip install -r requirements.txt
 	pip install plotly>=4.7.1
-	wget https://github.com/plotly/orca/releases/download/v1.2.1/orca-1.2.1-x86_64.AppImage -O /usr/local/bin/orca
-	chmod +x /usr/local/bin/orca
+	sudo wget https://github.com/plotly/orca/releases/download/v1.2.1/orca-1.2.1-x86_64.AppImage -O /usr/local/bin/orca
+	sudo chmod +x /usr/local/bin/orca
 	apt-get install xvfb libgtk2.0-0 libgconf-2-4
 	# conda install -c plotly plotly-orca==1.2.1 psutil requests
 

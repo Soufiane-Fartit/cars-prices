@@ -43,6 +43,7 @@ update-hyperparam:
 
 ## Train model
 train:
+	touch models/models-training/models_history.json
 	$(PYTHON_INTERPRETER) src/models/train_model.py data/processed/ models/ models/parameters.json
 
 ## Validate model
@@ -51,7 +52,7 @@ validate:
 
 ## Serve model through API
 serve:
-	$(PYTHON_INTERPRETER) src/models/serve_model.py
+	nohup $(PYTHON_INTERPRETER) src/models/serve_model.py &
 
 test-serve:
 	$(PYTHON_INTERPRETER) src/tests/test_serving.py

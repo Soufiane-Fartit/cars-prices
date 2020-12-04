@@ -65,12 +65,21 @@ jobs:
         continue-on-error: true
         run: |
           make sphinx
+      
+      # Archive docs
+      - name: Archive docs
+        uses: actions/upload-artifact@v2
+        with:
+          name: docs
+          path: |
+            docs/_build/html
 
       # Runs a set of commands using the runners shell
       - name: Make features from data
         run: |
           make features
       
+      # Archive processed data
       - name: Archive processed data
         uses: actions/upload-artifact@v2
         with:
@@ -89,6 +98,7 @@ jobs:
         run: |
           make train
       
+      # Archive model training and hyperparameters search
       - name: Archive model training and hyperparameters search
         continue-on-error: true
         uses: actions/upload-artifact@v2

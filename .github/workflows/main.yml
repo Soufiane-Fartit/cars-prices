@@ -120,43 +120,44 @@ jobs:
             models
             !models/deployment.json
 
-      # Login to docker
-      - name: Login to DockerHub
-        uses: docker/login-action@v1
-        with:
-          username: ${{ secrets.DOCKER_HUB_USERNAME }}
-          password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
-      
-      # Build and push docker image
-      - name: Build and push
-        continue-on-error: true
-        id: docker_build
-        uses: docker/build-push-action@v2
-        with:
-          context: ./
-          file: ./Dockerfile
-          builder: ${{ steps.buildx.outputs.name }}
-          push: true
-          tags: aliyad/cars-price:latest
-      
-      - name: Image digest
-        continue-on-error: true
-        run: echo ${{ steps.docker_build.outputs.digest }}
-        
   dockerize:
+
     runs-on: ubuntu-latest
+    
     needs: build
 
     steps:
       - uses: actions/checkout@v1
+
+      # Login to docker
       - name: Docker login
         run: docker login -u ${{ secrets.DOCKER_HUB_USERNAME }} -p ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
+
+      # Build docker image
       - name: Build
         run: docker build -t cars-price .
+
+      # Save docker image
+      - name: Save
+        run: docker save -o cars-price-docker-image.tar cars-price
+
+
+      # Archive docker image as artifact
+      - name: Archive docker image as artifact
+        continue-on-error: true
+        uses: actions/upload-artifact@v2
+        with:
+          name: model
+          path: |
+            cars-price-docker-image.tar
+
+      # Tag the image      
       - name: Tags
         run: |
           docker tag cars-price ${{ secrets.DOCKER_HUB_USERNAME }}/cars-price:${{ github.sha }}
           docker tag cars-price ${{ secrets.DOCKER_HUB_USERNAME }}/cars-price:latest
+
+      # Push the image
       - name: Push
         run: |
           docker push ${{ secrets.DOCKER_HUB_USERNAME }}/cars-price:${{ github.sha }}

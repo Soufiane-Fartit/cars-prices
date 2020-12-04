@@ -79,18 +79,16 @@ target/
 /data/external/*
 /data/interim/*
 /data/processed/*
-/data/raw/*
 !/data/external/.gitkeep
 !/data/interim/.gitkeep
 !/data/processed/.gitkeep
-!/data/raw/.gitkeep
 
 # exclude previous model and hypersearch runs
 #/models/hyperparams-search/*
 #/models/models-training/*
 #!/models/hyperparams-search/.gitkeep
 #!/models/models-training/.gitkeep
-/models/
+/models/*
 
 # Mac OS-specific storage files
 .DS_Store

@@ -8,7 +8,6 @@ COPY src/models/utils_func.py /cars-prices-api/src/models/utils_func.py
 COPY requirements.txt /cars-prices-api/requirements.txt
 COPY setup.py /cars-prices-api/setup.py
 
-RUN ls cars-prices-api/models/models-training
 WORKDIR /cars-prices-api
 RUN pip install --upgrade pip
 RUN pip install -r requirements.txt

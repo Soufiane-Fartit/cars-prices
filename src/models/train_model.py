@@ -86,7 +86,7 @@ def main(input_filepath, output_filepath, params_path):
 
     # SAVE MODEL ID
     with open(str(project_dir) + "/" + "models/deployment.json", "w") as outfile:
-        json.dump({'model_id': model_id, 'port': 5000}, outfile)
+        json.dump({'model_id': model_id, 'port': 33507}, outfile)
     logger.info("saved model id for deployment")
 
     return 0

@@ -183,6 +183,7 @@ jobs:
         uses: actions/download-artifact@v2
         with:
           name: model
+          path: /home/runner/work/cars-prices/cars-prices/models/models-training
     
       - name: Display structure of downloaded files
         run: ls -R

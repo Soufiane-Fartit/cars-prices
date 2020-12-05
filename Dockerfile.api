@@ -1,6 +1,10 @@
 FROM python
-ADD src/models/serve_model.py /cars-prices-api/src/models
-ADD /models /cars-prices-api
-EXPOSE 33507
+RUN mkdir -p /cars-prices-api
+COPY src/models/serve_model.py /cars-prices-api/src/models/serve_model.py
+COPY models /cars-prices-api/models
+COPY requirements2.txt /cars-prices-api/requirements.txt
 RUN pip install --upgrade pip
-CMD ["python", "/cars-prices-api/src/models/serve_model.py"]
+RUN pip install -r /cars-prices-api/requirements.txt
+WORKDIR /cars-prices-api/src/models
+EXPOSE 5000
+ENTRYPOINT ["python","serve_model.py"]

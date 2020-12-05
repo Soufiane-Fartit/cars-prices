@@ -4,6 +4,7 @@ RUN mkdir -p /cars-prices-api
 COPY src/models/serve_model.py /cars-prices-api/src/models/serve_model.py
 COPY models /cars-prices-api/models
 COPY requirements.txt /cars-prices-api/requirements.txt
+COPY setup.py /cars-prices-api/setup.py
 RUN pip install --upgrade pip
 RUN pip install -r /cars-prices-api/requirements.txt
 WORKDIR /cars-prices-api/src/models

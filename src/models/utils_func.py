@@ -158,4 +158,5 @@ def plot_trees(rf, feature_names, target_names, model_id):
 
 
 def get_id_list(N=6):
+    print([x[0] for x in os.walk("models/models-training")])
     return [x[0][-N:] for x in os.walk("models/models-training")][1:]

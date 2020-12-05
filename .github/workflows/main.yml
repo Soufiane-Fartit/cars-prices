@@ -124,7 +124,7 @@ jobs:
 
     runs-on: ubuntu-latest
     
-    needs: build
+    needs: dockerize-api
 
     steps:
       - uses: actions/checkout@v1

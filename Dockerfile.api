@@ -7,7 +7,7 @@ COPY src/models/utils_func.py /cars-prices-api/src/models/utils_func.py
 #COPY models /cars-prices-api/models
 COPY requirements.txt /cars-prices-api/requirements.txt
 COPY setup.py /cars-prices-api/setup.py
-COPY models/ /cars-prices-api
+COPY models /cars-prices-api
 
 WORKDIR /cars-prices-api
 RUN pip install --upgrade pip

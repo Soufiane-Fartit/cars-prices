@@ -29,7 +29,7 @@ assert r.status_code == 200
 
 prediction_list = ast.literal_eval(r.content.decode("utf-8"))["predictions"]
 df_slice["predictions"] = prediction_list
-# print(df_slice)
+print(df_slice)
 
 assert len(prediction_list) == df.shape[0], 'wrong shape returned'
 assert r2_score(df["price"], df["predictions"]) > 0.7, 'predictions are bad'

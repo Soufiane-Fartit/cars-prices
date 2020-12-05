@@ -120,7 +120,7 @@ jobs:
             models
             !models/deployment.json
 
-  dockerize:
+  dockerize-pipeline:
 
     runs-on: ubuntu-latest
     
@@ -135,11 +135,11 @@ jobs:
 
       # Build docker image
       - name: Build
-        run: docker build -f Dockerfile.pipeline -t cars-price .
+        run: docker build -f Dockerfile.pipeline -t cars-price-pipeline .
 
       # Save docker image
       - name: Save
-        run: docker save -o cars-price-docker-image.tar cars-price
+        run: docker save -o cars-price-pipeline-docker-image.tar cars-price-pipeline
 
 
       # Archive docker image as artifact
@@ -147,17 +147,59 @@ jobs:
         continue-on-error: true
         uses: actions/upload-artifact@v2
         with:
-          name: cars-price-docker-image
-          path: cars-price-docker-image.tar
+          name: cars-price-docker-image-pipeline
+          path: cars-price-docker-image-pipeline.tar
 
       # Tag the image      
       - name: Tags
         run: |
-          docker tag cars-price ${{ secrets.DOCKER_HUB_USERNAME }}/cars-price:${{ github.sha }}
-          docker tag cars-price ${{ secrets.DOCKER_HUB_USERNAME }}/cars-price:latest
+          docker tag cars-price-pipeline ${{ secrets.DOCKER_HUB_USERNAME }}/cars-price-pipeline:${{ github.sha }}
+          docker tag cars-price-pipeline ${{ secrets.DOCKER_HUB_USERNAME }}/cars-price-pipeline:latest
 
       # Push the image
       - name: Push
         run: |
-          docker push ${{ secrets.DOCKER_HUB_USERNAME }}/cars-price:${{ github.sha }}
-          docker push ${{ secrets.DOCKER_HUB_USERNAME }}/cars-price:latest
+          docker push ${{ secrets.DOCKER_HUB_USERNAME }}/cars-price-pipeline:${{ github.sha }}
+          docker push ${{ secrets.DOCKER_HUB_USERNAME }}/cars-price-pipeline:latest
+
+  dockerize-api:
+
+    runs-on: ubuntu-latest
+    
+    needs: build
+
+    steps:
+      - uses: actions/checkout@v1
+
+      # Login to docker
+      - name: Docker login
+        run: docker login -u ${{ secrets.DOCKER_HUB_USERNAME }} -p ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
+
+      # Build docker image
+      - name: Build
+        run: docker build -f Dockerfile.api -t cars-price-api .
+
+      # Save docker image
+      - name: Save
+        run: docker save -o cars-price-api-docker-image.tar cars-price-api
+
+
+      # Archive docker image as artifact
+      - name: Archive docker image as artifact
+        continue-on-error: true
+        uses: actions/upload-artifact@v2
+        with:
+          name: cars-price-docker-image-api
+          path: cars-price-docker-image-api.tar
+
+      # Tag the image      
+      - name: Tags
+        run: |
+          docker tag cars-price-api ${{ secrets.DOCKER_HUB_USERNAME }}/cars-price-api:${{ github.sha }}
+          docker tag cars-price-api ${{ secrets.DOCKER_HUB_USERNAME }}/cars-price-api:latest
+
+      # Push the image
+      - name: Push
+        run: |
+          docker push ${{ secrets.DOCKER_HUB_USERNAME }}/cars-price-api:${{ github.sha }}
+          docker push ${{ secrets.DOCKER_HUB_USERNAME }}/cars-price-api:latest

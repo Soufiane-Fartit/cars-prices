@@ -39,3 +39,9 @@ Traceback (most recent call last):
     s.bind(server_address)
 OSError: [Errno 98] Address already in use
 2020-12-04 03:02:46,750 - werkzeug - INFO - 127.0.0.1 - - [04/Dec/2020 03:02:46] "[37mPOST /api/ HTTP/1.1[0m" 200 -
+2020-12-05 01:57:05,782 - werkzeug - INFO - 127.0.0.1 - - [05/Dec/2020 01:57:05] "[33mGET / HTTP/1.1[0m" 404 -
+2020-12-05 01:57:06,141 - werkzeug - INFO - 127.0.0.1 - - [05/Dec/2020 01:57:06] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2020-12-05 01:58:36,136 - werkzeug - INFO - 127.0.0.1 - - [05/Dec/2020 01:58:36] "[37mPOST /api/ HTTP/1.1[0m" 200 -
+2020-12-05 01:59:14,029 - werkzeug - INFO - 127.0.0.1 - - [05/Dec/2020 01:59:14] "[37mPOST /api/ HTTP/1.1[0m" 200 -
+2020-12-05 01:59:31,148 - werkzeug - INFO - 127.0.0.1 - - [05/Dec/2020 01:59:31] "[37mPOST /api/ HTTP/1.1[0m" 200 -
+2020-12-05 02:00:33,503 - werkzeug - INFO - 127.0.0.1 - - [05/Dec/2020 02:00:33] "[37mPOST /api/ HTTP/1.1[0m" 200 -

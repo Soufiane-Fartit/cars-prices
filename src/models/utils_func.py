@@ -5,6 +5,7 @@
 """
 
 from datetime import datetime
+import os
 import json
 import pickle
 import string
@@ -154,3 +155,7 @@ def plot_trees(rf, feature_names, target_names, model_id):
 
         axes[index].set_title("Estimator: " + str(index), fontsize=11)
     fig.savefig("models/models-training/run_" + model_id + "/Trees.png")
+
+
+def get_id_list(N=6):
+    return [x[0][-N:] for x in os.walk("models/models-training")][1:]

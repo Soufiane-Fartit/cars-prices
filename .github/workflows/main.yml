@@ -147,8 +147,8 @@ jobs:
         continue-on-error: true
         uses: actions/upload-artifact@v2
         with:
-          name: cars-price-docker-image-pipeline
-          path: cars-price-docker-image-pipeline.tar
+          name: cars-price-pipeline-docker-image
+          path: cars-price-pipeline-docker-image.tar
 
       # Tag the image      
       - name: Tags
@@ -176,7 +176,7 @@ jobs:
         uses: actions/download-artifact@v2
         with:
           name: model
-          path: |
+          path: /cars-prices-api/
 
       # Login to docker
       - name: Docker login
@@ -196,8 +196,8 @@ jobs:
         continue-on-error: true
         uses: actions/upload-artifact@v2
         with:
-          name: cars-price-docker-image-api
-          path: cars-price-docker-image-api.tar
+          name: cars-price-api-docker-image
+          path: cars-price-api-docker-image.tar
 
       # Tag the image      
       - name: Tags

@@ -3,6 +3,7 @@ FROM python
 RUN mkdir -p /cars-prices-api
 
 COPY src/models/serve_model.py /cars-prices-api/src/models/serve_model.py
+COPY src/models/utils_func.py /cars-prices-api/src/models/utils_func.py
 COPY models /cars-prices-api/models
 COPY requirements.txt /cars-prices-api/requirements.txt
 COPY setup.py /cars-prices-api/setup.py
@@ -12,7 +13,6 @@ COPY test_environment.py /cars-prices-api/test_environment.py
 RUN ls cars-prices-api/models/models-training
 WORKDIR /cars-prices-api
 RUN pip install --upgrade pip
-#RUN make requirements
 RUN pip install -r requirements.txt
 
 WORKDIR /cars-prices-api/src/models

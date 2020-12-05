@@ -8,7 +8,7 @@ import json
 import pickle
 from flask import Flask, request
 import numpy as np
-
+from utils_func import get_id_list
 
 app = Flask(__name__)
 
@@ -45,6 +45,10 @@ if __name__ == "__main__":
 
     model_id = params["model_id"]
     port = params["port"]
+
+    if not model_id:
+        print('available models : ', get_id_list())
+        model_id = get_id_list()[0]
 
     modelfile = (
         str(project_dir) + "/models/models-training/run_" + model_id + "/model.pkl"

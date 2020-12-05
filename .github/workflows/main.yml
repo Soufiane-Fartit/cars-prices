@@ -171,6 +171,13 @@ jobs:
     steps:
       - uses: actions/checkout@v1
 
+      # Import artifacts build job
+      - name: Import archive
+        uses: actions/download-artifact@v2
+        with:
+          name: model
+          path: |
+
       # Login to docker
       - name: Docker login
         run: docker login -u ${{ secrets.DOCKER_HUB_USERNAME }} -p ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}

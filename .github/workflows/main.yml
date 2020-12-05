@@ -171,15 +171,11 @@ jobs:
     steps:
       - uses: actions/checkout@v1
 
-      - name: Make directory
-        run: sudo mkdir /cars-prices-api
-
       # Import artifacts build job
       - name: Import archive
         uses: actions/download-artifact@v2
         with:
           name: model
-          path: /cars-prices-api
     
       - name: Display structure of downloaded files
         run: ls -R

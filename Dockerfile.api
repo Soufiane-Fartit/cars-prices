@@ -1,4 +1,5 @@
 FROM python
+
 RUN mkdir -p /cars-prices-api
 COPY src/models/serve_model.py /cars-prices-api/src/models/serve_model.py
 COPY models /cars-prices-api/models

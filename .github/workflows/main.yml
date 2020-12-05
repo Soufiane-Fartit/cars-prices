@@ -172,7 +172,7 @@ jobs:
       - uses: actions/checkout@v1
 
       - name: Make directory
-        run: mkdir /cars-prices-api
+        run: sudo mkdir /cars-prices-api
 
       # Import artifacts build job
       - name: Import archive

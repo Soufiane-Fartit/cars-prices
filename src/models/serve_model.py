@@ -47,16 +47,25 @@ if __name__ == "__main__":
         model_id = params["model_id"]
         port = params["port"]
 
+        modelfile = (
+            str(project_dir) + "/models/models-training/run_" + model_id + "/model.pkl"
+        )
+
+        print(f"Using model : {model_id}")
+
+        model = pickle.load(open(modelfile, "rb"))
+
     except :
         print('available models : ', get_id_list())
         model_id = get_id_list()[0]
         port = "33507"
 
-    modelfile = (
-        str(project_dir) + "/models/models-training/run_" + model_id + "/model.pkl"
-    )
+        modelfile = (
+            str(project_dir) + "/models/models-training/run_" + model_id + "/model.pkl"
+        )
 
-    print(f"Using model : {model_id}")
+        print(f"Using model : {model_id}")
 
-    model = pickle.load(open(modelfile, "rb"))
+        model = pickle.load(open(modelfile, "rb"))
+
     app.run(debug=True, host="0.0.0.0", port=port)

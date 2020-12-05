@@ -111,14 +111,21 @@ jobs:
           make serve && make test-serve
       
       # Archive model training and hyperparameters search
-      - name: Archive model training and hyperparameters search
+      - name: Archive hyperparameters search
+        continue-on-error: true
+        uses: actions/upload-artifact@v2
+        with:
+          name: hyperparams-search
+          path: |
+            models/hyperparams-search
+
+      - name: Archive model training
         continue-on-error: true
         uses: actions/upload-artifact@v2
         with:
           name: model
           path: |
-            models
-            !models/deployment.json
+            models/models-training
 
   dockerize-pipeline:
 

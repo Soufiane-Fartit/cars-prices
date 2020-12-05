@@ -3,4 +3,5 @@ ADD src/models/serve_model.py /cars-prices-api/src/models/
 ADD /models/ /cars-prices-api/models/
 EXPOSE 33507
 RUN pip install --upgrade pip
+RUN pip install flask
 CMD ["python", "/cars-prices-api/src/models/serve_model.py"]

@@ -40,15 +40,17 @@ if __name__ == "__main__":
     # load up the .env entries as environment variables
     # load_dotenv(find_dotenv())
 
-    with open(str(project_dir) + "/models/deployment.json", "r") as infile:
-        params = json.load(infile)
+    try :
+        with open(str(project_dir) + "/models/deployment.json", "r") as infile:
+            params = json.load(infile)
 
-    model_id = params["model_id"]
-    port = params["port"]
+        model_id = params["model_id"]
+        port = params["port"]
 
-    if not model_id:
+    except :
         print('available models : ', get_id_list())
         model_id = get_id_list()[0]
+        port = "33507"
 
     modelfile = (
         str(project_dir) + "/models/models-training/run_" + model_id + "/model.pkl"

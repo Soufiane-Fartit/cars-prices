@@ -179,7 +179,6 @@ jobs:
     
       - name: Display structure of downloaded files
         run: ls -R
-        working-directory: /cars-prices-api
 
       # Login to docker
       - name: Docker login

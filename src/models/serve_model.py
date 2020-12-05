@@ -44,7 +44,7 @@ if __name__ == "__main__":
         with open(str(project_dir) + "/models/deployment.json", "r") as infile:
             params = json.load(infile)
 
-        model_id = params["model_id"]
+        #model_id = params["model_id"]
         port = params["port"]
 
         modelfile = (

@@ -1,6 +1,6 @@
 FROM python
 
-RUN mkdir -p /cars-prices-api
+# RUN mkdir -p /cars-prices-api
 
 COPY src/models/serve_model.py /cars-prices-api/src/models/serve_model.py
 COPY src/models/utils_func.py /cars-prices-api/src/models/utils_func.py

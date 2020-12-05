@@ -9,11 +9,11 @@ COPY setup.py /cars-prices-api/setup.py
 COPY Makefile /cars-prices-api/Makefile
 COPY test_environment.py /cars-prices-api/test_environment.py
 
-RUN ls cars-prices-api
+RUN ls cars-prices-api/models/models-training
 WORKDIR /cars-prices-api
 RUN pip install --upgrade pip
-RUN make requirements
-#RUN pip install -r /cars-prices-api/requirements.txt
+#RUN make requirements
+RUN pip install -r requirements.txt
 
 WORKDIR /cars-prices-api/src/models
 EXPOSE 5000

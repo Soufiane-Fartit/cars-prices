@@ -186,6 +186,7 @@ jobs:
       # RUN PIPELINE ONCE (TEMPORARY : TO BE REMOVED)
       - name: Run pipeline
         run: |
+          make requirements
           make features
           make train
 

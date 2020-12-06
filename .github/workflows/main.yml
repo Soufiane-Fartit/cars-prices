@@ -241,6 +241,12 @@ jobs:
           make requirements
           make features
           make train
+      
+      # Display structure of downloaded files
+      - name: Display structure of downloaded files
+        run: |
+          pwd
+          ls -R
 
       - name: Build, Push and Deploy to Heroku #set the whatever name you want to this step
         id: heroku

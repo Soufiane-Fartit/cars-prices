@@ -184,7 +184,14 @@ jobs:
         with:
           name: model
           path: /home/runner/work/cars-prices/cars-prices/models/models-training
-    
+          
+      # RUN PIPELINE ONCE (TEMPORARY : TO BE REMOVED)
+      - name: Run pipeline
+        run: |
+          make features
+          make train
+
+      # Display structure of downloaded files
       - name: Display structure of downloaded files
         run: ls -R
 

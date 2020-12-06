@@ -243,6 +243,12 @@ jobs:
           make train
       
       # Display structure of downloaded files
+      - name: Rename dockerfile and delete other one
+        run: |
+          rm /home/runner/work/cars-prices/cars-prices/Dockerfile.pipeline
+          mv /home/runner/work/cars-prices/cars-prices/Dockerfile.api /home/runner/work/cars-prices/cars-prices/Dockerfile
+          
+      # Display structure of downloaded files
       - name: Display structure of downloaded files
         run: |
           pwd
@@ -255,4 +261,4 @@ jobs:
           email: soufiane.fartit@gmail.com # your heroku email
           api_key: ${{ secrets.HEROKU_API_KEY }} # your  heroku api key
           app_name: "cars-prices-api" # you aplication name
-          dockerfile_path: '/home/runner/work/cars-prices/cars-prices/Dockerfile.api' # set the path to the folder wher the Dokerfile is located
+          dockerfile_path: '/home/runner/work/cars-prices/cars-prices' # set the path to the folder wher the Dokerfile is located

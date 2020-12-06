@@ -179,11 +179,11 @@ jobs:
       - uses: actions/checkout@v1
 
       # Import artifacts build job
-      - name: Import archive
-        uses: actions/download-artifact@v2
-        with:
-          name: model
-          path: /home/runner/work/cars-prices/cars-prices/models/models-training
+      #- name: Import archive
+      #  uses: actions/download-artifact@v2
+      #  with:
+      #    name: model
+      #    path: /home/runner/work/cars-prices/cars-prices/models/models-training
           
       # RUN PIPELINE ONCE (TEMPORARY : TO BE REMOVED)
       - name: Run pipeline

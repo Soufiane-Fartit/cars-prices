@@ -250,9 +250,9 @@ jobs:
 
       - name: Build, Push and Deploy to Heroku #set the whatever name you want to this step
         id: heroku
-        uses: jctaveras/heroku-deploy@v1.0.0  # use the latest version of the action
+        uses: jctaveras/heroku-deploy@v2.1.1  # use the latest version of the action
         with:
           email: soufiane.fartit@gmail.com # your heroku email
           api_key: ${{ secrets.HEROKU_API_KEY }} # your  heroku api key
           app_name: "cars-prices-api" # you aplication name
-          dockerfile: '/home/runner/work/cars-prices/cars-prices/Dockerfile.api' # set the path to the folder wher the Dokerfile is located
+          dockerfile_path: '/home/runner/work/cars-prices/cars-prices/Dockerfile.api' # set the path to the folder wher the Dokerfile is located

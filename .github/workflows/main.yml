@@ -172,6 +172,8 @@ jobs:
   dockerize-api:
 
     runs-on: ubuntu-latest
+    
+    needs: heroku
 
     steps:
       - uses: actions/checkout@v1
@@ -247,4 +249,4 @@ jobs:
           email: soufiane.fartit@gmail.com # your heroku email
           api_key: ${{ secrets.HEROKU_API_KEY }} # your  heroku api key
           app_name: "cars-prices-api" # you aplication name
-          dockerfile_path: 'Dockerfile.api' # set the path to the folder wher the Dokerfile is located
+          dockerfile_path: '/cars-prices-api/Dockerfile.api' # set the path to the folder wher the Dokerfile is located

@@ -14,17 +14,17 @@ with open("models/deployment.json", "r") as infile:
 port = params["port"]
 
 url = "http://0.0.0.0:" + str(port) + "/api/"
-
+url_heroku = "http://cars-prices-api.herokuapp.com"
 
 df = pd.read_csv("data/processed/dataset.csv", low_memory=False)
-df_slice = df  # .loc[0:5]
+df_slice = df.loc[0:5]
 
 X_slice = df_slice.drop("price", axis=1)
 
 data_array = X_slice.to_numpy()
 data_list = data_array.tolist()
 
-r = requests.post(url, json={"data": data_list})
+r = requests.post(url_heroku, json={"data": data_list})
 assert r.status_code == 200
 
 prediction_list = ast.literal_eval(r.content.decode("utf-8"))["predictions"]

@@ -150,12 +150,12 @@ jobs:
 
 
       # Archive docker image as artifact
-      - name: Archive docker image as artifact
-        continue-on-error: true
-        uses: actions/upload-artifact@v2
-        with:
-          name: cars-price-pipeline-docker-image
-          path: cars-price-pipeline-docker-image.tar
+      #- name: Archive docker image as artifact
+      #  continue-on-error: true
+      #  uses: actions/upload-artifact@v2
+      #  with:
+      #    name: cars-price-pipeline-docker-image
+      #    path: cars-price-pipeline-docker-image.tar
 
       # Tag the image      
       - name: Tags
@@ -210,12 +210,12 @@ jobs:
 
 
       # Archive docker image as artifact
-      - name: Archive docker image as artifact
-        continue-on-error: true
-        uses: actions/upload-artifact@v2
-        with:
-          name: cars-price-api-docker-image
-          path: cars-price-api-docker-image.tar
+      #- name: Archive docker image as artifact
+      #  continue-on-error: true
+      #  uses: actions/upload-artifact@v2
+      #  with:
+      #    name: cars-price-api-docker-image
+      #    path: cars-price-api-docker-image.tar
 
       # Tag the image      
       - name: Tags

@@ -255,4 +255,4 @@ jobs:
           email: soufiane.fartit@gmail.com # your heroku email
           api_key: ${{ secrets.HEROKU_API_KEY }} # your  heroku api key
           app_name: "cars-prices-api" # you aplication name
-          dockerfile_path: '/home/runner/work/cars-prices/cars-prices/Dockerfile.api' # set the path to the folder wher the Dokerfile is located
+          dockerfile: '/home/runner/work/cars-prices/cars-prices/Dockerfile.api' # set the path to the folder wher the Dokerfile is located

@@ -7,13 +7,28 @@ Predict cars prices based on some of their features.
 
 ------------
 This project is using :
-    - project structure : the cookiecutter data science template
-    - format : pylint, flake8, black
-    - automated documentation : Sphinx
-    - versioning : git
-    - CI/CD : github actions
-    - packaging : docker (training pipeline + serving API)
-    - serving : Heroku
+> project structure : 
+* the cookiecutter data science template
+
+> format : 
+* pylint
+* flake8
+* black
+
+> automated documentation : 
+* Sphinx
+
+> versioning : 
+* git
+
+> CI/CD : 
+* github actions
+
+> packaging : 
+* docker (training pipeline + serving API)
+
+> serving : 
+* Heroku
 ------------
 
 Project Organization

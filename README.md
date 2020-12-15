@@ -2,33 +2,35 @@
 
 # Predict cars prices
 
+> :warning: **Not finished** this work is still in progress
 
-Predict cars prices based on some of their features.
+Predict cars prices based on some of their features. 
+The goal is for it to be done with respect to the [MLops level 2](https://cloud.google.com/solutions/machine-learning/mlops-continuous-delivery-and-automation-pipelines-in-machine-learning#mlops_level_2_cicd_pipeline_automation)
 
 ------------
 This project is using :
 > project structure : 
-* the cookiecutter data science template
+>* the cookiecutter data science template
 
 > format : 
-* pylint
-* flake8
-* black
+>* pylint
+>* flake8
+>* black
 
 > automated documentation : 
-* Sphinx
+>* Sphinx
 
 > versioning : 
-* git
+>* git
 
 > CI/CD : 
-* github actions
+>* github actions
 
 > packaging : 
-* docker (training pipeline + serving API)
+>* docker (training pipeline + serving API)
 
 > serving : 
-* Heroku
+>* Heroku
 ------------
 
 Project Organization
